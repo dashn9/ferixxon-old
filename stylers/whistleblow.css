@@ -1,0 +1,100 @@
+body {
+    background-image: url("../images/bgs/wb-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px
+}
+.mnd-logo {
+    display: block;
+    width: 20%;
+    margin: 2% auto 0;
+    background: #fff;
+    padding: 1%;
+    z-index: 10;
+    position: relative;
+    text-align: center;
+    opacity: 0.95;
+}
+  .mnd-logo img {
+    width: 50%;
+  }
+#body-overlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+#form-body {
+    background-color: #fff;
+    width: 30%;
+    margin: 15vh auto 0;
+    padding: 2%;
+    text-align: center;
+    opacity: 0.95;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+.inputs-bar {
+    width: 100%;
+    margin: 7% 0;
+}
+label.text {
+    color: #555;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-decoration: underline;
+    text-decoration-color: #ffb618;
+    -moz-text-decoration-color: #ffb618;
+}
+input.text, textarea.text {
+    width: 95%;
+    margin-top: 2%;
+    outline: none;
+    border: none;
+    padding: 1%;
+    box-shadow: 2px 2px 2px 2px #eee;
+    background: #fdfdfd;
+    color: #333;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+textarea.text {
+    resize: none;
+    height: 150px;
+}
+input.text:active, textarea.text:active {
+    box-shadow: 1px 1px 1px 1px #eee;
+}
+button#submit {
+    width: 95%;
+    padding: 2%;
+    color: white;
+    border: none;
+    outline: none;
+    background-color: #ffb618;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+button#submit:active {
+    width: 92%;
+}

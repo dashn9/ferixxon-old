@@ -1,0 +1,172 @@
+/* CSS Document */
+@font-face {
+  font-family: "Open Sans";
+  src: url(/fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf);
+}
+body {
+  background-color: rgba(253, 253, 253, 1);
+  margin: 0;
+  font-family: Open Sans;
+  font-weight: 600;
+}
+.mnd-logo {
+  display: block;
+  width: 16%;
+  margin: 4% auto 6%;
+}
+.mnd-logo img {
+  width: 100%;
+}
+#login-form {
+  width: 55%;
+  box-shadow: 1px 1px 3px 3px #eee;
+  margin: 2% auto 8%;
+  border-radius: 5px;
+  background-color: white;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+}
+#login-form h3 {
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #ff5a34;
+  padding: 1% 0 1%;
+  border-radius: 4px;
+  opacity: 0.9;
+  margin: 2.5%;
+}
+#login-form .input-division {
+  margin: 6% 4%;
+}
+#login-form .input-division:last-of-type {
+  margin: 4% 0;
+  text-align: right;
+  width: 97%;
+}
+#login-form .input-division .form-labels {
+  font-size: 13px;
+  font-weight: lighter;
+  color: #999;
+}
+#login-form .input-division .form-inputs {
+  width: 50%;
+  border: none;
+  border-bottom: 1px solid #ffb618;
+  color: #777;
+  outline: none;
+  margin-left: 1%;
+  font-family: open sans;
+}
+#login-form .input-division .form-inputs:focus {
+  outline: none;
+  transition: border-bottom 1s;
+  border-bottom: 1px solid #ff5a34;
+}
+#login-form .signin-errors {
+  background-color: #f71313;
+  color: white;
+  opacity: 0.7;
+  padding: 0.5%;
+  font-size: 12px;
+  display: inline-block;
+}
+#login-form .input-division #id-submit-form {
+  margin: 0 auto;
+  color: white;
+  background-color: #ff5a34;
+  width: fit-content;
+  padding: 1.5% 4%;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: zen kaku, Open Sans;
+}
+#login-form .input-division #id-submit-form:hover {
+  background-color: #ff8317;
+  transition: background-color 1s;
+}
+#login-form #no-account {
+  font-size: 13px;
+  color: #ffb618;
+  margin: 2.5%;
+}
+#login-form #no-account a {
+  color: inherit;
+  text-decoration: underline;
+}
+@media screen and (max-width: 800px) {
+  .mnd-logo {
+    width: 24%;
+    margin-top: 8%;
+  }
+  #login-form {
+    width: 70%;
+    margin-top: 8%;
+    margin-bottom: 12%;
+  }
+  #login-form h3 {
+    font-size: 18px;
+  }
+  #login-form .input-division .form-labels {
+    font-size: 11px;
+  }
+  #login-form .input-division .form-inputs {
+      font-size: 12px;
+  }
+  #login-form .input-division #id-submit-form {
+      font-size: 12px; 
+  }
+  #login-form #no-account {
+      font-size: 11px;
+  }
+}
+@media screen and (max-width: 500px) {
+    body {
+        background-color: rgba(250, 250, 250, 1);
+    }
+    .mnd-logo {
+        width: 30%;
+        margin-top: 18%;
+    }
+    #login-form {
+        margin-top: 10%;
+        box-shadow: none;
+        border: none;
+        border-top: 2px solid #ffb618;
+        border-bottom: 2px solid #ffb618;
+        width: 85%;
+    }
+    #login-form h3 {
+        display: none;
+    }
+    #login-form .input-division {
+        margin-top: 12%;
+    }
+    #login-form .input-division .form-labels {
+        display: none;
+      }
+      #login-form .input-division .form-inputs {
+          font-size: 12px;
+          width: 90%;
+      }
+      #login-form .input-division:last-of-type {
+          width: 100%;
+          margin-top: 12%;
+      }
+      #login-form .signin-errors {
+          font-size: 11px;
+          color: #444;
+          background: transparent;
+          color: #f71313;
+          opacity: 0.6;
+      }
+      #login-form .input-division #id-submit-form {
+        margin-right: 0;
+        margin-left: 15%;
+        border-radius: 4px 0 0 4px;
+        -webkit-border-radius: 4px 0 0 4px;
+        -moz-border-radius: 4px 0 0 4px;
+        -ms-border-radius: 4px 0 0 4px;
+        -o-border-radius: 4px 0 0 4px;
+}
+}

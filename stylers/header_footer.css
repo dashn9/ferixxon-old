@@ -1,0 +1,393 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+  font-family: "Zen Kaku";
+  src: url(../fonts/Zen_Kaku_Gothic_Antique/ZenKakuGothicAntique-Medium.ttf);
+}
+header {
+  padding: 2%;
+  background-color: white;
+  box-shadow: 0 4px 6px #eee;
+  position: relative;
+  z-index: 2;
+}
+.ferixxon-logo {
+  min-width: 100px;
+  width: 11%;
+}
+.naira-currency {
+  margin-right: 2px;
+}
+.header-input-division {
+  width: 60%;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 0;
+  display: none;
+}
+.header-input-division input:first-child {
+  width: 60%;
+  background: #fff;
+  border: 0.5px solid #ccc;
+  border-right: none;
+  font-size: 14px;
+  padding: 8px;
+  box-shadow: 0px 0px 0px 0px inset #ddd;
+  border-radius: 3px 0px 0px 3px;
+  color: #777;
+}
+.header-input-division input:first-child:focus {
+  outline: none;
+  border: 0.5px solid red;
+}
+.header-input-division input:nth-child(2) {
+  font-size: 14px;
+  padding: 8px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border-radius: 0px 3px 3px 0px;
+  color: white;
+  border: 0px;
+  outline: none;
+  background-color: #ffb618;
+  cursor: pointer;
+}
+.nav-links-division {
+  margin: 2%;
+  margin-top: 0;
+  transform: translateY(-50%);
+  float: right;
+  width: fit-content;
+  white-space: nowrap;
+  padding: 1.25% 0;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+.nav-links-division nav ul {
+  text-align: center;
+  margin-top: 25%;
+}
+.nav-links-division nav ul li {
+  display: inline;
+  cursor: pointer;
+}
+.nav-links-division nav ul li:hover a {
+  color: #ff9634;
+}
+.nav-links-division nav ul li .nav-links-icons {
+  width: 15px;
+  margin-bottom: -2px;
+  margin-right: 2%;
+}
+.nav-links-division nav ul li a {
+  text-decoration: none;
+  color: #ffb618;
+  font-size: 14px;
+  font-weight: bolder;
+}
+.nav-links-division nav ul li + li {
+  margin-left: 4%;
+}
+.nav-links-division nav #account {
+  margin: 3% auto 0;
+  width: 150px;
+  text-align: center;
+  position: relative;
+}
+#account::after {
+  position: absolute;
+  content: "";
+  border-width: 9px;
+  border-style: solid;
+  border-color: #ff5a34 transparent transparent transparent;
+  bottom: -26px;
+  left: 45%;
+  cursor: pointer;
+}
+#account > span:first-of-type {
+  color: #ffb618;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #ff5a34;
+  cursor: pointer;
+  font-size: 15px;
+  transition: border 1s linear;
+}
+#account > span:first-of-type a {
+  text-decoration: none;
+  color: inherit;
+}
+#account > span:first-of-type:hover {
+  border-bottom: 2px solid #ffb618;
+  transition: border 1s linear;
+}
+#account > span:first-of-type img {
+  width: 15px;
+  margin-bottom: -2px;
+  margin-right: 4px;
+  padding-right: 3px;
+  border-right: 2px solid #ccc;
+  transition: border 1s linear;
+}
+#account > span:first-of-type:hover img {
+  border-right: 2px solid #ff5a34;
+  transition: border 1s linear;
+}
+#account:hover .account-sub {
+  display: block;
+}
+#account:hover::after {
+  border-color: transparent transparent #ff5a34 transparent;
+  bottom: -17px;
+}
+#account .account-sub {
+  margin-top: 16px;
+  width: 170%;
+  position: absolute;
+  border-radius: 4px;
+  left: -35%;
+  box-shadow: 0 2px 2px 2px rgba(240, 240, 240, 1);
+  background-color: #fff;
+  border-top: 1px solid #ff5a34;
+  font-size: 13px;
+  color: #555;
+  display: none;
+  min-height: 50%;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+#account .account-sub .account-first-sub {
+  display: flex;
+  border-bottom: 1px solid #bbb;
+  justify-content: center;
+  align-items: center;
+  padding: 10% 0;
+}
+.account-first-sub div {
+  text-align: center;
+  width: 50%;
+}
+.account-first-sub div:nth-child(1) {
+  border-right: 0.5px solid #bbb;
+}
+.account-first-sub div:nth-child(1) span:first-of-type {
+  background: #ffb618;
+  color: white;
+  display: inline-block;
+  border-radius: 50%;
+  padding: 10px;
+  width: 15px;
+  height: 15px;
+  font-weight: bold;
+}
+.account-first-sub div:nth-child(1) span:nth-of-type(2) {
+  margin-top: 10px;
+  display: inline-block;
+}
+.account-second-sub p {
+  margin-top: 25px;
+  cursor: pointer;
+}
+.account-second-sub p a {
+  text-decoration: none;
+  color: #555;
+}
+.account-second-sub p:hover a {
+  color: #ffb618;
+}
+.account-sub > a:last-child p {
+  margin-top: 25px;
+  background-color: #ff5a34;
+  margin-bottom: 0;
+  padding: 2%;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+.account-sub > a:last-child {
+  text-decoration: none;
+}
+.account-sub > a:last-child:hover p {
+  color: #ffe9b5;
+}
+footer {
+  font-family: zen kaku;
+  margin-top: 5%;
+  background: #262222;
+  margin-bottom: 0;
+  color: #fff;
+  width: 100%;
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.footer-t-bg {
+  background: rgba(40, 40, 40, 0.02);
+  color: #555;
+}
+.footer-t-bg > #footer-foot {
+  background: rgba(30, 30, 30, 0.03);
+  color: #555;
+}
+footer .sub-divs {
+  width: 30%;
+}
+footer .sub-divs ul li a {
+  text-decoration: none;
+}
+.sub-divs ul li {
+  margin-top: 10%;
+  list-style: none;
+  cursor: pointer;
+  line-height: 1.5;
+}
+.footer-b-bg .sub-divs ul li a {
+  color: #fff;
+}
+.footer-t-bg .sub-divs ul li a {
+  color: #555;
+}
+.sub-divs ul li img {
+  margin-right: 6px;
+  margin-bottom: -3px;
+}
+.sub-divs .follow-elements-bar {
+  display: inline-block;
+  width: fit-content;
+}
+.sub-divs ul li#follow-us {
+  cursor: default;
+}
+.sub-divs ul li#follow-us a {
+  margin-left: 22px;
+  cursor: pointer;
+}
+.sub-divs ul li:hover a {
+  color: #ffb618;
+}
+footer #footer-foot {
+  width: 100%;
+  margin-top: 3%;
+  text-align: center;
+  background: #2a2a2a;
+  padding: 1%;
+  margin-bottom: 0;
+  font-size: 13px;
+}
+@media screen and (max-width: 720px) {
+  .nav-links-division nav ul li .nav-links-icons {
+    width: 11px;
+    margin-bottom: -1px;
+  }
+  footer .sub-divs {
+    text-indent: -10px;
+  }
+  .nav-links-division nav ul li a {
+    font-size: 11px;
+  }
+  footer .sub-divs ul li a,
+  footer .sub-divs ul li {
+    font-size: 11px;
+  }
+  .follow-elements-bar a img {
+    width: 13px;
+    height: 13px;
+  }
+}
+@media screen and (max-width: 560px) {
+  footer .sub-divs {
+    text-indent: -28px;
+  }
+}
+@media screen and (max-width: 502px) {
+  .ferixxon-logo {
+    display: block;
+    margin: 0 auto;
+    width: 9%;
+  }
+  .nav-links-division {
+    padding: 0;
+    margin: 1%;
+    margin-top: -2%;
+  }
+  .nav-links-division nav ul {
+    padding: 0;
+    margin: 0;
+    margin-top: -2%;
+    margin-right: 12px;
+  }
+  .nav-links-division nav ul li:first-of-type {
+    margin-right: 16px;
+  }
+  .nav-links-division nav ul li .nav-links-icons {
+    width: 14px;
+  }
+  .nav-links-division nav ul li a {
+    font-size: 0;
+    text-transform: lowercase;
+    color: transparent;
+  }
+  .nav-links-division nav ul li:hover a {
+    color: transparent;
+  }
+  .nav-links-division nav #account {
+    margin: 0;
+  }
+  #account > span:first-of-type {
+    font-size: 13px;
+    float: right;
+  }
+  #account > span:first-of-type img {
+    width: 13px;
+  }
+  #account .account-sub {
+    display: none;
+  }
+  #account:hover .account-sub {
+    display: none;
+  }
+  #account::after {
+    display: none;
+  }
+  footer {
+
+  }
+  footer .sub-divs {
+    z-index: -1;
+    position: absolute;
+    background: inherit;
+    width: fit-content;
+    padding: 2%;
+    flex-grow: 1;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: none;
+  }
+  footer .sub-divs::before {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    top: -20px;
+    right: calc(50% - 10px);
+    border-style: solid;
+    border-color: transparent transparent #262222 transparent;
+    border-width: 10px;
+  }
+  footer .sub-divs:nth-child(1) {
+    left: 0;
+  }
+  footer .sub-divs:nth-child(3) {
+    right: 0;
+  }
+  .sub-divs .follow-elements-bar {
+    margin-left: 2%;
+  }
+}

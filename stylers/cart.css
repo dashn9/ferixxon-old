@@ -1,0 +1,243 @@
+@charset "utf-8";
+@font-face {
+    font-family: "Zen Kaku";
+    src: url(/fonts/Zen_Kaku_Gothic_Antique/ZenKakuGothicAntique-Medium.ttf);
+}
+body {
+    background-color: rgba(248, 248, 248, 1);
+    font-family: Zen Kaku;
+    overflow-x: hidden;
+}
+#address-page {
+    margin-top: 5%;
+}
+#receipt-page {
+    margin-top: 5%;
+    opacity: 0;
+}
+#address-page .address {
+    width: 50%;
+    margin: 0 auto;
+    border-top: 2px solid #FFB618;
+    background-color: #FFF;
+    padding-bottom: 2%;
+}
+.address h2 {
+    color: #555;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+}
+.address .or-with-line {
+    line-height: 0.1px;
+    border-bottom: 1px dotted #999;
+    text-align: center;
+    width: 90%;
+    margin: 6% auto 0;
+}
+.or-with-line span  {
+    background-color: #FFF;
+    width: 40px;
+    border: 10px solid #FFF;
+    border-top: none;
+    border-bottom: none;
+    color: #333;
+    font-size: 18px;
+}
+.address #address-message {
+    margin-top: 5%;
+    margin-left: 5%;
+    font-size: 14px;
+    color: #333;
+}
+.address #address-message a  {
+    color: #ffB618;
+}
+.address #temp-address {
+    min-width: 70%;
+    max-width: 70%;
+    border: none;
+    border-left: 2px solid #FFB618;
+    padding: 5px;
+    font-size: 13px;
+    background: #F9F9F9;
+    color: #555;
+    outline: none;
+    margin-left: 2%;
+}
+.address .saved-addresses {
+    margin: 5%;
+}
+.saved-addresses .saved-address{
+    margin-top: 4%;
+}
+.saved-address input {
+    color: green;
+}
+.saved-address label  {
+    margin-left: 2%;
+    font-size: 15px;
+    color: #444;
+    cursor: pointer;
+}
+#receipt
+input, textarea {
+    font-family: Zen Kaku;
+    color: #555;
+}
+#header-completion {
+    font-size: 18px;
+    display: inline-block;
+    margin-left: 3%;
+    color: #777;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.status-bar {
+    width: 80%;
+    margin: 0 auto;
+    height: 10px;
+    background:rgba(226, 226, 226, 1);
+    margin-top:2%;
+    border-radius: 16px;
+    position:relative;
+}
+.status-bar .status-fill {
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 10px;
+    background: #ff8f18;
+    border-radius: 16px;
+    transition: width 1.5s ease-out;
+}
+.status {
+    background: #FFB618;
+    color: white;
+    position: absolute;     
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    top: -50%;
+    line-height: 1.5;
+    font-size: 13px;
+    cursor: pointer;
+}
+#status-1 {
+    left: 0;
+}
+#status-2 {
+    left: 33%;
+}
+
+#status-3 {
+    left: 66%;
+    right: 0;
+}
+#status-4 {
+    right: 0;
+}
+#receipt {
+    border: 2px dashed #999;
+    border-left: none;
+    border-right: none;
+    width: 35%;
+    margin: 2% auto 0;
+    padding: 1%;
+    background-color: #FFF;
+}
+#receipt .order-heads {
+    min-width: 70%;
+    max-width: 70%;
+    margin-top: 2%;
+    border: none;
+    border-left: 2px solid #FFB618;
+    padding: 5px;
+    font-size: 13px;
+    background: #F9F9F9;
+    color: #555;
+    outline: none;
+}
+#receipt #order-description {
+    min-height: 50px;
+    max-height: 50px;
+    resize: none;
+}
+#receipt .receipt-main {
+    border-top: 2px dashed #999;
+    margin-top: 20px;
+}
+.batch-head {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #FF5A34;
+    margin-top: 5%;
+    
+}
+.orders-elements {
+    color: #555;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin: 5%;
+}
+.order-el-price::before, #total-amount::before {
+    content:"\20A6";
+}
+.order-el-price, #total-amount {
+    float: right;
+}
+#total {
+    font-size: 13px;
+    margin-top: 8%;
+    color: #333;
+}
+#total-amount {
+    font-size: 15px;
+    text-decoration-thickness: 2px;
+    text-decoration-color: #999;
+    text-decoration-line: underline;
+    text-decoration-style: double;
+}
+#proceed {
+    background: #FF5A34;
+    position: fixed;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.6%;
+    font-size: 14px;
+    min-width: 6%;
+    top: 90%;
+    border-radius: 2px;
+    left: 85%;
+    transition: background 0.5s linear;
+}
+#proceed:hover {
+    background: #ff8f18;
+    transition: background 0.5s linear;
+}
+#proceed:active {
+    font-size: 13px;
+    padding-bottom: 0.65%;
+}
+.esc-home {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 2%;
+    background: linear-gradient(#FFB618, #FF5A34);
+    padding: 0.5%;
+    width: 45px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.15);
+}
+.esc-home:active {
+    box-shadow: none;
+}
