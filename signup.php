@@ -6,7 +6,7 @@ class signup_details_dealer {
 	const HOST_NAME = "localhost",
 		DATABASE_NAME = "youxerze",
 		SQL_USERNAME = "phantom",
-		SQL_PASSWORD = "thix cervixe ez fer de origeeneated cervixe oonly";
+		SQL_PASSWORD = "tKD5KZ4K9\$M@";
 
 	//User information variables
 	private $name, $last_name, $e_mail, $telephone_number, $password;
@@ -251,10 +251,10 @@ $signup_validator = new signup_validator_processor();
 </head>
 
 <body>
-<a href="http://mnd" class="mnd-logo"><img src="/images/ferixxon-logo-1.png" alt="ferixxon log" width="20%" /></a>
+<a href="https://www.ferixxon.com/" class="mnd-logo"><img src="/images/ferixxon-logo-1.png" alt="ferixxon log" width="20%" /></a>
 	<div id="signup-form-parent">
 		<h1>Sign Up</h1>
-		<form id="signup-form" action="signup.php" method="post" onSubmit="return signupElementsValidators.validateAllFormInput()">
+		<form id="signup-form" action="register" method="post" onSubmit="return signupElementsValidators.validateAllFormInput()">
 			<?php if(false) { echo "<div class=\"signup-errors\" id=\"signup-head-error\">
 				<p>SOMETHING WENT WRONG WHILE REGISTERING YOU, CONTACT THE ADMIN ON THIS <a href=\"#\">PAGE</a>
 				</p>
@@ -284,29 +284,35 @@ $signup_validator = new signup_validator_processor();
 	</div>
 	
     <footer class="footer-t-bg">
-        <div class="sub-divs footer-group-1">
+	<div class="sub-divs footer-group-1">
             <ul>
-                <li><a>Home</a></li>
-                <li><a>Terms of Use</a></li>
-                <li><a>About Us</a></li>
+                <li><img src="./front-icons/icons8-home-30-grey.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /><a href="https://www.ferixxon.com/">Home</a></li>
+                <li><img src="./front-icons/icons8-terms-and-conditions-24-grey.png" width="16px" height="16px" alt="Terms of Use Icon - Ferixxon" /><a>Terms of Use</a></li>
+                <li><img src="./front-icons/icons8-about-30-grey.png" width="16px" height="16px" alt="About Us Icon - Ferixxon" /><a>About Us</a></li>
             </ul>
         </div>
         <div class="sub-divs footer-group-2">
             <ul>
-                <li><a>Contact Us</a></li>
-                <li><a>Enlist your business</a></li>
-                <li><a>Whistleblower</a></li>
-                <li><a>Raise a Suggestion</a></li>
+                <li><img src="./front-icons/icons8-contact-us-24-grey.png" width="16px" height="16px" alt="Contact Us Icon - Ferixxon" /><a href="https://www.ferixxon.com/contact" >Contact Us</a></li>
+                <li><img src="./front-icons/icons8-small-business-30-grey.png" width="16px" height="16px" alt="Business Icon - Ferixxon" /><a href="https://www.ferixxon.com/enlist-your-business" >Enlist your business</a></li>
+                <li><img src="./front-icons/icons8-whistle-60-grey.png" width="16px" height="16px" alt="Whistle Icon - Ferixxon" /><a href="https://www.ferixxon.com/whistle-blower" >Whistleblower</a></li>
+                <li><img src="./front-icons/icons8-idea-30-grey.png" width="16px" height="16px" alt="Idea(Suggestion) - Ferixxon" /><a>Raise a Suggestion</a></li>
             </ul>
         </div>
         <div class=" sub-divs footer-group-3">
             <ul>
-                <li><a>Newsletter Subscription</a></li>
-                <li><a>Offers and Promotions</a></li>
-                <li>Follow Us: </li>
+                <li><img src="./front-icons/icons8-subscription-24-grey.png" width="16px" height="16px" alt="Subscription Icon - Ferixxon" /><a>Newsletter Subscription</a></li>
+                <li><img src="./front-icons/icons8-discount-30-grey.png" width="16px" height="16px" alt="Promotion Icon - Ferixxon" /><a>Offers and Promotions</a></li>
+                <li id="follow-us"><img src="./front-icons/icons8-love-circled-24-grey.png" width="16px" height="16px" alt="Follow(Love) Icon - Ferixxon" />Follow us:
+                    <div class="follow-elements-bar">
+                        <a><img src="./front-icons/icons8-instagram-50-grey.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /></a>
+                        <a><img src="./front-icons/icons8-facebook-50-grey.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /></a>
+                        <a><img src="./front-icons/icons8-twitter-50-grey.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /></a>
+                    </div>
+                </li>
+                <li><img src="./front-icons/icons8-icons8-24-grey.png" width="16px" height="16px" alt="Home Icon - Ferixxon" />Icons (<a href="./https://icons8.com" id="icons8-link">Icons 8</a>)</li>
             </ul>
         </div>
-
         <p id="footer-foot">All rights reserved &copy; ferixxon | 2022</p>
     </footer>
 	<script type="text/javascript" src="scripts/signup.js">

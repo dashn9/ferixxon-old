@@ -4,9 +4,9 @@ class kitchen_dealer {
 	//Database login credentials
 	private
 	const HOST_NAME = "localhost",
-		DATABASE_NAME = "products_contents",
-		SQL_USERNAME = "Collector",
-		SQL_PASSWORD = "Bm7iHqPAHQF7yfIx";
+		DATABASE_NAME = "dpl_db_fx",
+		SQL_USERNAME = "collector",
+		SQL_PASSWORD = "v2JE3!NMo6@i";
 
 	//Kitchen name variable
 	private $kitchen_name;
@@ -14,7 +14,7 @@ class kitchen_dealer {
 	//PHP Data Object (PDO) variable to insert the PDO Object in.
 	public $pdo_for_user_registration_sql;
     
-    public $query = "SELECT nid, title, body_value AS description, field_product_price_per_unit_value AS ppu FROM (SELECT entity_id, field_kitchen_restruant_value FROM `products_contents`.`node__field_kitchen_restruant`) a
+    public $query = "SELECT nid, title, body_value AS description, field_product_price_per_unit_value AS ppu FROM (SELECT entity_id, field_kitchen_restaurant_value FROM `dpl_db_fx`.`node__field_kitchen_restaurant`) a
                INNER JOIN
                (SELECT nid, title FROM `node_field_data`) b 
                ON a.entity_id=b.nid
@@ -24,7 +24,7 @@ class kitchen_dealer {
                INNER JOIN
                (SELECT entity_id, field_product_price_per_unit_value FROM `node__field_product_price_per_unit`) d 
                ON a.entity_id=d.entity_id
-               WHERE a.field_kitchen_restruant_value=:kitchen_name";
+               WHERE a.field_kitchen_restaurant_value=:kitchen_name";
     
     //where the result/formated result will be store when  data is queried
     private $results_fetched;

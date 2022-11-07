@@ -5,7 +5,7 @@ body {
     font-size: 13px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.error {
+.error, .success {
     background-color: #ff7d60;
     color: white;
     padding: 1%;
@@ -23,10 +23,17 @@ body {
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
 }
+.success {
+    background-color: #34b514;
+    width: 30%;
+}
+.success a {
+    color: white;
+}
 #inner-body {
     
 }
-.mnd-logo {
+.fxn-logo {
     display: block;
     width: 15%;
     margin: 2% auto 0;
@@ -41,7 +48,7 @@ body {
     z-index: 10;
     position: relative;
 }
-  .mnd-logo img {
+  .fxn-logo img {
     width: 100%;
   }
 #form-panel {

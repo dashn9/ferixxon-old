@@ -3,5 +3,5 @@ session_name("user");
 session_start();
 session_destroy();
 
-header("Location: http://mnd/", true, "302");
+header("Location: https://www.ferixxon.com/", true, "302");
 ?>

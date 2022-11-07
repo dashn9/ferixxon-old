@@ -3,9 +3,9 @@ class product_dealer {
 	//Database login credentials
 	private
 	const HOST_NAME = "localhost",
-		DATABASE_NAME = "products_contents",
-		SQL_USERNAME = "Collector",
-		SQL_PASSWORD = "Bm7iHqPAHQF7yfIx";
+		DATABASE_NAME = "dpl_db_fx",
+		SQL_USERNAME = "collector",
+		SQL_PASSWORD = "v2JE3!NMo6@i";
 
 	//product nid variable
 	private $product_nid;

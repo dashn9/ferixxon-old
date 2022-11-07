@@ -20,16 +20,20 @@ if (isset($_SESSION["UNQ_ID"])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage | FERIXXON</title>
-    <link rel="stylesheet" type="text/css" hreflang="EN" href="stylers/header_footer.css" />
-    <link rel="stylesheet" type="text/css" hreflang="EN" href="stylers/cindex.css" />
+    <meta name="description" content="Ferixxon is a company that renders food and groceries delivery service by using world class system logistics model that maximizes your convenience, affordability and time. we are always here for you" />
+    <meta name="keywords" content="ferixxon, ferixxon.com, logistics, delivery, food delivery, campus, campus food delivery, campus food" />
+
+    <title>Home | FERIXXON</title>
+    <link rel="stylesheet" type="text/css" hreflang="EN" href="./stylers/header_footer.css" />
+    <link rel="stylesheet" type="text/css" hreflang="EN" href="./stylers/cindex.css" />
+
 </head>
 
 <body>
     <div id="direct-sub-body">
         <div id="message-overlay">
             <div id="message-overlay-sub">
-                <img class="exit-image" src="front-icons/icons8-delete-24.png" onclick="orderProcessor.hideMessager()" />
+                <img class="exit-image" src="./front-icons/icons8-delete-24.png" onclick="orderProcessor.hideMessager()" />
                 <div id="message-body"></div>
             </div>
         </div>
@@ -40,7 +44,14 @@ if (isset($_SESSION["UNQ_ID"])) {
             <div id="input"><input type="text" required /><button id="submit-message-input">Submit</button></div>
             <div id="message-response"><button id="button-one">Yes</button><button id="button-two">No</button></div>
         </div>
-        <header> <img class="ferixxon-logo" src="images/ferixxon-logo-1.png" />
+        <div id="loading-wrapper" style="display: none">
+            <div class="loading-circle loading-circle-1">
+                <div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <header> <img class="ferixxon-logo" src="./images/ferixxon-logo-1.png" />
             <div class="header-input-division">
                 <input placeholder="What would you like to eat today, Dear?" type="text" />
                 <input type="button" value="GO!" />
@@ -51,9 +62,9 @@ if (isset($_SESSION["UNQ_ID"])) {
 
                     try {
                         $login_nav = '<ul>
-                    <li><a href="signup.php"><img src="/front-icons/icons8-sign-up-24.png" alt="Sign Up Icon" class="nav-links-icons" />SIGN UP</a>
+                    <li><a href="./register"><img src="./front-icons/icons8-sign-up-24.png" alt="Sign Up Icon" class="nav-links-icons" />SIGN UP</a>
                     </li>
-                    <li><a href="login.php"><img src="/front-icons/icons8-log-in-24.png" alt="Log In Icon" class="nav-links-icons">LOG IN</a>
+                    <li><a href="./signin"><img src="./front-icons/icons8-log-in-24.png" alt="Log In Icon" class="nav-links-icons">LOG IN</a>
                     </li>
                 </ul>';
                         $account_html_username = "
@@ -83,7 +94,7 @@ if (isset($_SESSION["UNQ_ID"])) {
                                 Recharge Account
                             </p>
                         </div>
-                        <a href=\"http://mnd/logout.php/\">
+                        <a href=\"https://ferixxon.com/logout.php/\">
                             <p>
                                 Logout
                             </p>
@@ -111,9 +122,9 @@ if (isset($_SESSION["UNQ_ID"])) {
             </div>
         </header>
         <div id="sub-body">
-            <div class="cart-toggler" onclick="orderProcessor.toggleCartDisplay()"><img src="/front-icons/icons8-fast-cart-24.png" alt="ferixxon - fast cart" /></div>
+            <div class="cart-toggler" onclick="orderProcessor.toggleCartDisplay()"><img src="./front-icons/icons8-fast-cart-24.png" alt="ferixxon - fast cart" /></div>
             <div class="images-slide-bar">
-                <div class="images-hold-slide"> <img src="images/promotional-images/ferixxon-poster-one.png" alt="ferixxon 20% promotional image" /> <img src="images/promotional-images/ferixxon-poster-two.png" alt="Ferixxon poster for orders quick delivery" /> <img src="images/promotional-images/ferixxon-poster-three.png" alt="Ferixxon Poster of Foods" /> <img src="images/promotional-images/ferixxon-poster-two.png" alt="Vanilla ice cream" /> </div>
+                <div class="images-hold-slide"> <img src="./images/promotional-images/ferixxon-poster-one.png" alt="ferixxon 20% promotional image" /> <img src="./images/promotional-images/ferixxon-poster-two.png" alt="Ferixxon poster for orders quick delivery" /> <img src="./images/promotional-images/ferixxon-poster-three.png" alt="Ferixxon Poster of Foods" /> <img src="./images/promotional-images/ferixxon-poster-four.png" alt="Vanilla ice cream" /> </div>
                 <div id="images-slide-bar-overlay"> </div>
                 <div id="image-slide-states-bar">
                     <div id="slide-text">
@@ -128,7 +139,7 @@ if (isset($_SESSION["UNQ_ID"])) {
             <hr id="hr-after-image-slide" />
             <aside id="orders-bar">
                 <h3>Orders</h3>
-                <div id="orders-buttons"><img title="Create a new order batch" src="front-icons/icons8-add-basket-24.png" onclick="orderProcessor.createBatch()" /><img title="Save existing cart permanently" src="front-icons/icons8-cart-user-24.png" alt="save icon" onclick="orderProcessor.saveCartToAccount()" /><img title="Delete an existing order batch" src="front-icons/icons8-shopping-basket-remove-24.png" src="remove basket" onclick="orderProcessor.deleteBatch()" /><img src="front-icons/icons8-delete-view-24.png" title="Delete Everything in the cart" onclick="orderProcessor.resetCart()" />
+                <div id="orders-buttons"><img title="Create a new order batch" src="./front-icons/icons8-add-basket-24.png" onclick="orderProcessor.createBatch()" /><img title="Save existing cart permanently" src="./front-icons/icons8-cart-user-24.png" alt="save icon" onclick="orderProcessor.saveCartToAccount()" /><img title="Retrieve saved carts" src="./front-icons/icons8-buying-24.png" alt="save icon" onclick="orderProcessor.retrieveCartsFromAccount()" /><img title="Delete an existing order batch" src="./front-icons/icons8-shopping-basket-remove-24.png" src="./remove basket" onclick="orderProcessor.deleteBatch()" /><img src="./front-icons/icons8-delete-view-24.png" title="Delete Everything in the cart" onclick="orderProcessor.resetCart()" />
                 </div>
                 <div id="orders">
                     <div class="batch">
@@ -184,41 +195,41 @@ if (isset($_SESSION["UNQ_ID"])) {
             </div>
         </div>
     </div>
-    <footer>
+    <footer class="footer-b-bg">
         <div class="sub-divs footer-group-1">
             <ul>
-                <li><img src="/front-icons/icons8-home-50.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /><a>Home</a></li>
-                <li><img src="/front-icons/icons8-terms-and-conditions-24.png" width="16px" height="16px" alt="Terms of Use Icon - Ferixxon" /><a>Terms of Use</a></li>
-                <li><img src="/front-icons/icons8-about-24.png" width="16px" height="16px" alt="About Us Icon - Ferixxon" /><a>About Us</a></li>
+                <li><img src="./front-icons/icons8-home-50.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /><a href="https://www.ferixxon.com/">Home</a></li>
+                <li><img src="./front-icons/icons8-terms-and-conditions-24.png" width="16px" height="16px" alt="Terms of Use Icon - Ferixxon" /><a>Terms of Use</a></li>
+                <li><img src="./front-icons/icons8-about-24.png" width="16px" height="16px" alt="About Us Icon - Ferixxon" /><a>About Us</a></li>
             </ul>
         </div>
         <div class="sub-divs footer-group-2">
             <ul>
-                <li><img src="/front-icons/icons8-contact-us-24.png" width="16px" height="16px" alt="Contact Us Icon - Ferixxon" /><a>Contact Us</a></li>
-                <li><img src="/front-icons/icons8-small-business-30.png" width="16px" height="16px" alt="Business Icon - Ferixxon" /><a>Enlist your business</a></li>
-                <li><img src="/front-icons/icons8-whistle-60.png" width="16px" height="16px" alt="Whistle Icon - Ferixxon" /><a>Whistleblower</a></li>
-                <li><img src="/front-icons/icons8-idea-30.png" width="16px" height="16px" alt="Idea(Suggestion) - Ferixxon" /><a>Raise a Suggestion</a></li>
+                <li><img src="./front-icons/icons8-contact-us-24.png" width="16px" height="16px" alt="Contact Us Icon - Ferixxon" /><a href="https://www.ferixxon.com/contact" >Contact Us</a></li>
+                <li><img src="./front-icons/icons8-small-business-30.png" width="16px" height="16px" alt="Business Icon - Ferixxon" /><a href="https://www.ferixxon.com/enlist-your-business" >Enlist your business</a></li>
+                <li><img src="./front-icons/icons8-whistle-60.png" width="16px" height="16px" alt="Whistle Icon - Ferixxon" /><a href="https://www.ferixxon.com/whistle-blower" >Whistleblower</a></li>
+                <li><img src="./front-icons/icons8-idea-30.png" width="16px" height="16px" alt="Idea(Suggestion) - Ferixxon" /><a>Raise a Suggestion</a></li>
             </ul>
         </div>
         <div class=" sub-divs footer-group-3">
             <ul>
-                <li><img src="/front-icons/icons8-subscription-24.png" width="16px" height="16px" alt="Subscription Icon - Ferixxon" /><a>Newsletter Subscription</a></li>
-                <li><img src="/front-icons/icons8-discount-30.png" width="16px" height="16px" alt="Promotion Icon - Ferixxon" /><a>Offers and Promotions</a></li>
-                <li id="follow-us"><img src="/front-icons/icons8-love-circled-24.png" width="16px" height="16px" alt="Follow(Love) Icon - Ferixxon" />Follow us:
+                <li><img src="./front-icons/icons8-subscription-24.png" width="16px" height="16px" alt="Subscription Icon - Ferixxon" /><a>Newsletter Subscription</a></li>
+                <li><img src="./front-icons/icons8-discount-30.png" width="16px" height="16px" alt="Promotion Icon - Ferixxon" /><a>Offers and Promotions</a></li>
+                <li id="follow-us"><img src="./front-icons/icons8-love-circled-24.png" width="16px" height="16px" alt="Follow(Love) Icon - Ferixxon" />Follow us:
                     <div class="follow-elements-bar">
-                        <a><img src="/front-icons/icons8-instagram-50.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /></a>
-                        <a><img src="/front-icons/icons8-facebook-50.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /></a>
-                        <a><img src="/front-icons/icons8-twitter-50.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /></a>
+                        <a><img src="./front-icons/icons8-instagram-50.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /></a>
+                        <a><img src="./front-icons/icons8-facebook-50.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /></a>
+                        <a><img src="./front-icons/icons8-twitter-50.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /></a>
                     </div>
                 </li>
-                <li><img src="/front-icons/icons8-icons8-24.png" width="16px" height="16px" alt="Home Icon - Ferixxon" />Icons (<a href="https://icons8.com">Icons 8</a>)</li>
+                <li><img src="./front-icons/icons8-icons8-24.png" width="16px" height="16px" alt="Home Icon - Ferixxon" />Icons (<a href="./https://icons8.com" id="icons8-link">Icons 8</a>)</li>
             </ul>
         </div>
 
         <p id="footer-foot">All rights reserved &copy; ferixxon | 2022</p>
     </footer>
 </body>
-<script src="scripts/cindex.js">
+<script src="./scripts/cindex.js">
 </script>
 
 </html>

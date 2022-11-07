@@ -1,0 +1,9 @@
+RewriteEngine On
+
+RewriteCond {REQUEST_FILENAME} !-d
+RewriteRule ^signin login.php
+RewriteRule ^register signup.php
+RewriteRule ^contact contact-us.php
+RewriteRule ^enlist-your-business business-enlist.php
+RewriteRule ^whistle-blower wb.php
+RewriteRule ^server_scripts/init_payment server_scripts/initialize_transaction.php

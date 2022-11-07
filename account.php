@@ -5,7 +5,7 @@ class account
     const HOST_NAME = "localhost",
         DATABASE_NAME = "youxerze",
         SQL_USERNAME = "phantom",
-        SQL_PASSWORD = "thix cervixe ez fer de origeeneated cervixe oonly";
+        SQL_PASSWORD = "tKD5KZ4K9\$M@";
 
     public $user_id = null;
     private $pdo_for_user_details_retriever;
@@ -136,7 +136,7 @@ $user_account = new account();
                     </li>
                     <li><img src="front-icons/icons8-complaint-24.png" alt="complaint icon" /><a href="#">Make A Complaint</a>
                     </li>
-                    <li id="logout"><img src="front-icons/icons8-exit-24.png" alt="logout icon" /><a href="http://mnd/logout.php">Logout</a>
+                    <li id="logout"><img src="front-icons/icons8-exit-24.png" alt="logout icon" /><a href="./logout.php">Logout</a>
                     </li>
                 </ul>
             </nav>
@@ -148,7 +148,7 @@ $user_account = new account();
 
             <div id="account-information-content">
                 <div class="header-bar">
-                    <a href="http://mnd" class="mnd-logo"><img src="/images/ferixxon-logo-1.png" alt="ferixxon logo" width="20%" /></a>
+                    <a href="https://www.ferixxon.com/" class="mnd-logo"><img src="/images/ferixxon-logo-1.png" alt="ferixxon logo" width="20%" /></a>
                     <div class="title-bar">
                         <img src="./front-icons/icons8-hamburger-menu-bar-with-parallel-navigation-button-24.png" alt="Menu Bar - Ferixxon" id="display-sidebar" onclick="accountInformationProcessor.displaySideBar();">
                         <h1>ACCOUNT INFORMATION</h1>

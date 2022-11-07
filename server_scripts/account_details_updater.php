@@ -5,7 +5,7 @@ class account_details_updater
     const HOST_NAME = "localhost",
         DATABASE_NAME = "youxerze",
         SQL_USERNAME = "phantom",
-        SQL_PASSWORD = "thix cervixe ez fer de origeeneated cervixe oonly";
+        SQL_PASSWORD = "tKD5KZ4K9\$M@";
 
     private const MIN_DATE_TO_UPDATE = 10;
 
@@ -177,7 +177,7 @@ class account_details_updater
             } else {
                 return json_encode(["error_type" => "NO_CHGS", "msg" => "You did not make any changes on your account to save"]);
             }
-        } catch (Error) {
+        } catch (Exception $err) {
             return json_encode(["error_type" => "UNKNOWN", "msg" => "Some unknown error occured, try again some time. If it still persists contact the administrator"]);
         }
     }
@@ -248,7 +248,7 @@ class account_details_updater
             if(count($address) <= 3) {
                 foreach($address as $el) {
                     $el = trim($el);
-                    if(strlen($el) >= 6) {
+                    if(strlen($el) >= 6 && strlen($el) <= 100) {
                         if(!preg_match("/^[A-Za-z]+[A-Za-z0-9 ,]*$/", $el)) {
                             return false;
                         } 

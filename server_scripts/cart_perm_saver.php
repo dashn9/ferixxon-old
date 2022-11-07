@@ -5,10 +5,10 @@ class product_dealer
 {
     //Database login credentials
     private
-    const HOST_NAME = "localhost",
-        DATABASE_NAME = "products_contents",
-        SQL_USERNAME = "Collector",
-        SQL_PASSWORD = "Bm7iHqPAHQF7yfIx";
+	const HOST_NAME = "localhost",
+		DATABASE_NAME = "dpl_db_fx",
+		SQL_USERNAME = "collector",
+		SQL_PASSWORD = "v2JE3!NMo6@i";
 
     //product nid variable
     private $product_nid;
@@ -59,7 +59,7 @@ class account
     const HOST_NAME = "localhost",
         DATABASE_NAME = "youxerze",
         SQL_USERNAME = "phantom",
-        SQL_PASSWORD = "thix cervixe ez fer de origeeneated cervixe oonly";
+        SQL_PASSWORD = "tKD5KZ4K9\$M@";
 
     public $user_id = null;
     private $pdo_for_user_details_retriever;
@@ -118,17 +118,16 @@ class cart_processor_saver
     const HOST_NAME = "localhost",
         DATABASE_NAME = "youxerze",
         SQL_USERNAME = "phantom",
-        SQL_PASSWORD = "thix cervixe ez fer de origeeneated cervixe oonly";
+        SQL_PASSWORD = "tKD5KZ4K9\$M@";
 
     //PHP Data Object (PDO) variable to insert the PDO Object in.
     public $pdo_for_cart_save;
 
-    public $product_dealer, $cart, $cart_title, $in_cart_valid = false;
+    public $cart, $cart_title, $in_cart_valid = false;
 
     const MAX_CART_LEN = 6, MAX_CART_HEADER_LEN = 12, MAX_BATCH_LEN = 8;
     function __construct()
     {
-        $this->product_dealer = new product_dealer();
         if ((isset($_POST["cart_title"]) && strlen($_POST["cart_title"]) > 0 && strlen($_POST["cart_title"]) <= 20) && !preg_match("/[^A-Za-z0-9 ()_-]/", $_POST["cart_title"]) && !preg_match("/[ ]{2,}/", $_POST["cart_title"]) && isset($_POST["cart"]) && !empty($_POST["cart"]) && $this->cart = json_decode($_POST["cart"])) {
             if (is_array($this->cart)) {
                 $this->cart_title = trim($_POST["cart_title"]);
@@ -202,7 +201,7 @@ class cart_processor_saver
         $pdo_for_cart_save->bindValue(":user_agent", htmlspecialchars($_SERVER["HTTP_USER_AGENT"]));
 
         if($pdo_for_cart_save->execute()) {
-            echo json_encode(["error_type" => "NO_ERR_SUCC", "msg" => "Your cart has been successfully saved successfully"]);
+            echo json_encode(["error_type" => "NO_ERR_SUCC", "msg" => "Your cart has been successfully saved"]);
             return true;
         }
         else {
@@ -225,7 +224,7 @@ function main()
             }
         }
     } else {
-        echo json_encode(["error_type" => "ERR_NO_LOG", "msg" => "You need to be logged in to permanently save an order"]);
+        echo json_encode(["error_type" => "ERR_NO_LOG", "msg" => "You need to have an account signed in to permanently save a cart"]);
     }
 }
 main();

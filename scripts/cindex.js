@@ -23,7 +23,9 @@ class AjaxCommunicator {
     }
     initiateCommunication() {
         var _this = this;
+        customPrompts.enableLoadingModal();
         function xhrReady() {
+            customPrompts.disableLoadingModal();
             if (this.readyState == 4 && this.status == 200) {
                 if (_this.callBack) {
                     _this.callBack(this.responseText);
@@ -191,6 +193,7 @@ var animateImageSlide = {
 var customPrompts = {
     messager: document.getElementsByClassName("message-overlay")[0],
     interactionBlocker: document.getElementById("interaction-blocker"),
+    centerLoadingModal: document.getElementById("loading-wrapper"),
     confirm: (question, yesCallBack, noCallBack) => {
         let messager = customPrompts.messager;
         customPrompts.interactionBlocker.style.display = "block";
@@ -248,6 +251,12 @@ var customPrompts = {
         customPrompts.messager.classList.remove("message-overlay-active");
         customPrompts.interactionBlocker.style.display = "none";
     },
+    enableLoadingModal: () => {
+        customPrompts.centerLoadingModal.style.display = "initial";
+    },
+    disableLoadingModal: () => {
+        customPrompts.centerLoadingModal.style.display = "none";
+    }
 };
 
 var orderProcessor = {
@@ -848,6 +857,9 @@ var orderProcessor = {
 
 
     },
+    retrieveCartsFromAccount: () => {
+
+    },
     saveCartToAccount: () => {
         function saveCart(cartTitle) {
             cartTitle = cartTitle.trim();
@@ -901,7 +913,7 @@ var KitchenSelectNProcessor = {
 
     UnOrderedListSelector: document.getElementsByClassName("kitchen-body-select")[0],
 
-    loadingCircle: document.getElementsByClassName("loading-circle")[0].style,
+    loadingCircle: document.getElementsByClassName("loading-circle")[1].style,
 
     kitchensMenuBodyElement: document.getElementsByClassName("kitchens-body"),
 
@@ -1232,6 +1244,7 @@ var autoPositionOrder = {
                     autoPositionOrder.orderElementMarginValue -= marginIncrement;
 
                     autoPositionOrder.orderElement.style.top = autoPositionOrder.orderElementMarginValue + 8 + "px";
+                    
 
                 } else {
 
@@ -1313,14 +1326,13 @@ var autoPositionOrder = {
             }
         }
 
-
     }
 
 };
 
 
 (function main() {
-
+    
     KitchenSelectNProcessor.main();
 
     autoPositionOrder.initiate();

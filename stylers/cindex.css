@@ -4,16 +4,17 @@
   font-family: "Roboto Light";
   src: url("/fonts/Roboto/Roboto-Light.ttf");
 }
+html {
+  overflow-x: hidden;
+}
 html, body {
   height: 100%;
   margin: 0;
-  overflow-x: hidden;
 }
 body {
   background-color: rgba(251, 251, 251, 1);
   font-family: Roboto Light;
   width: 100%;
-  overflow-x: hidden;
 }
 #direct-sub-body {
   min-height: 92%;
@@ -523,6 +524,15 @@ body {
   transform: rotate(-135deg);
   transition: transform 0.2s;
 }
+#loading-wrapper {
+  position: fixed;
+  z-index: 99;
+  background: #333;
+  top: 46%;
+  left: 46%;
+  padding: 25px 20px 20px 10px;
+  border-radius: 4px;
+}
 .loading-circle {
   display: none;
   background: white;
@@ -531,6 +541,9 @@ body {
   vertical-align: middle;
   margin-top: -5px;
   margin-left: 10px;
+}
+.loading-circle-1 {
+  display: inline-block;
 }
 .loading-circle > div {
   padding: 9px;

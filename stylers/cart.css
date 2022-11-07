@@ -7,11 +7,170 @@ body {
     background-color: rgba(248, 248, 248, 1);
     font-family: Zen Kaku;
     overflow-x: hidden;
+    margin: 0;
+}
+#message-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    display: none;
+  }
+  #message-overlay #message-overlay-sub {
+    height: 65vh;
+    width: 50%;
+    background: #fff;
+    margin: 13vh auto 0;
+    border-radius: 4px;
+    overflow: auto;
+    overflow-y: hidden;
+    padding: 2%;
+  }
+  #message-overlay .exit-image {
+    float: right;
+    margin: -2%;
+    box-shadow: 0 0 1px 1px #ddd;
+    cursor: pointer;
+    width: 18px;
+  }
+  #message-overlay .exit-image:active {
+    box-shadow: none;
+  }
+  .message-overlay {
+    width: 25%;
+    min-height: 20vh;
+    padding-bottom: 2%;
+    top: 40vh;
+    margin-left: 37.5%;
+    background: #fff;
+    z-index: 1000;
+    position: fixed;
+    border-radius: 6px;
+    display: none;
+  }
+  #interaction-blocker {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+  }
+  .message-overlay-active {
+    display: block;
+  }
+  .message-overlay .exit-image {
+    width: 20px;
+    float: right;
+    cursor: pointer;
+    opacity: 0.6;
+    margin: 5%;
+  }
+  .message-overlay .exit-image:hover {
+    opacity: 1;
+  }
+  .message-overlay #message-body {
+    width: 70%;
+    text-align: center;
+    margin: 15% auto 0;
+    font-size: 13px;
+    line-height: 1.8;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: #555;
+  }
+  .message-overlay #input {
+    width: 80%;
+    text-align: center;
+    margin: 10% auto 0;
+    display: none;
+  }
+  .message-overlay #input input:first-of-type {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ffb618;
+    color: #333;
+    width: 65%;
+    display: inline-block;
+  }
+  .message-overlay #input button:first-of-type {
+    margin-left: 5%;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    padding: 1%;
+    width: 25%;
+    border-radius: 4px;
+    color: white;
+    background-color: #ff5a34;
+    cursor: pointer;
+    display: inline;
+  }
+  .message-overlay #input button:first-of-type:hover {
+    background-color: #ff7a54;
+  }
+  .message-overlay #input button:first-of-type:active {
+    padding: 0.8%;
+    width: 27%;
+  }
+  .message-overlay #message-response {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 10%;
+    display: none;
+  }
+  #button-one,
+  #button-two,
+  #save-receipt {
+    border: none;
+    outline: none;
+    background: #ff5a34;
+    color: #fff;
+    padding: 1%;
+    font-size: 14px;
+    width: 20%;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+  }
+  #receipts-button-triggers-container {
+    margin: 2% 0 2%;
+  }
+  #save-receipt {
+    border-radius: 6px;
+    width: 15%;
+    font-size: 10px;
+    display: block;
+    margin: 0 auto;
+  }
+  #button-one {
+    float: left;
+  }
+  #button-two {
+    float: right;
+  }
+  #button-one:hover,
+  #button-two:hover,
+  #save-receipt:hover {
+    background: #ff7a54;
+  }
+  #button-one:active,
+  #button-two:active {
+    transition: width 2s linear;
+    background: #ff5a34;
+}
+.cart-pages {
 }
 #address-page {
     margin-top: 5%;
 }
-#receipt-page {
+#cart-view-page {
     margin-top: 5%;
     opacity: 0;
 }
@@ -53,7 +212,7 @@ body {
 .address #address-message a  {
     color: #ffB618;
 }
-.address #temp-address {
+.temps {
     min-width: 70%;
     max-width: 70%;
     border: none;
@@ -64,6 +223,7 @@ body {
     color: #555;
     outline: none;
     margin-left: 2%;
+    margin-top: 2%;
 }
 .address .saved-addresses {
     margin: 5%;
@@ -80,10 +240,30 @@ body {
     color: #444;
     cursor: pointer;
 }
-#receipt
+#cart-view
 input, textarea {
     font-family: Zen Kaku;
     color: #555;
+}
+.status-banner {
+    background-color: red;
+    padding: 4px;
+    color: white;
+    text-align: center;
+    font-size: 13px;
+    margin: 0;
+    text-transform: uppercase;
+}
+.status-banner a {
+    color: white;
+}
+#status-banner-cancel {
+    width: 18px;
+    height: 18px;
+    float: right;
+    cursor: pointer;
+    margin-right: 6%;
+    cursor: pointer;
 }
 #header-completion {
     font-size: 18px;
@@ -139,7 +319,7 @@ input, textarea {
 #status-4 {
     right: 0;
 }
-#receipt {
+#cart-view {
     border: 2px dashed #999;
     border-left: none;
     border-right: none;
@@ -148,7 +328,7 @@ input, textarea {
     padding: 1%;
     background-color: #FFF;
 }
-#receipt .order-heads {
+#cart-view .order-heads {
     min-width: 70%;
     max-width: 70%;
     margin-top: 2%;
@@ -160,21 +340,45 @@ input, textarea {
     color: #555;
     outline: none;
 }
-#receipt #order-description {
+#cart-view #order-description {
     min-height: 50px;
     max-height: 50px;
     resize: none;
 }
-#receipt .receipt-main {
+#cart-view .cart-view-main {
     border-top: 2px dashed #999;
     margin-top: 20px;
+}
+#receipt-view {
+    width: 35%;
+    margin: 4% auto 0;
+}
+.receipt-infos {
+    font-size: 12px;
+    margin-top: 4%;
+}
+.receipt-main {
+    border: 2px dashed #999;
+    border-left: none;
+    border-right: none;
+    padding: 3%;
+    background-color: #FFF;
+    margin-top: 6%;
+}
+.receipt-info-values {
+    float: right;
+}
+.receipt-main > .batch-head {
+    font-size: 13px;
+}
+.receipt-main > .order-elements {
+    font-size: 12px;
 }
 .batch-head {
     font-size: 15px;
     text-transform: uppercase;
     color: #FF5A34;
     margin-top: 5%;
-    
 }
 .orders-elements {
     color: #555;
@@ -200,9 +404,8 @@ input, textarea {
     text-decoration-line: underline;
     text-decoration-style: double;
 }
-#proceed {
+.cart-nav {
     background: #FF5A34;
-    position: fixed;
     color: #fff;
     border: none;
     outline: none;
@@ -210,18 +413,30 @@ input, textarea {
     padding: 0.6%;
     font-size: 14px;
     min-width: 6%;
-    top: 90%;
     border-radius: 2px;
-    left: 85%;
     transition: background 0.5s linear;
 }
-#proceed:hover {
+.cart-nav:hover {
     background: #ff8f18;
     transition: background 0.5s linear;
 }
-#proceed:active {
+.cart-nav:active {
     font-size: 13px;
     padding-bottom: 0.65%;
+}
+#cart-nav-parent {
+    width: 75%;
+    margin-left: 12.5%;
+    position: fixed;
+    bottom: 30px;
+    z-index: -1;
+}
+#proceed {
+    float: right;
+    min-width: 13%;
+}
+#back {
+    min-width: 13%;
 }
 .esc-home {
     position: fixed;
@@ -231,6 +446,7 @@ input, textarea {
     background: linear-gradient(#FFB618, #FF5A34);
     padding: 0.5%;
     width: 45px;
+    height: 45px;
     text-align: center;
     border-radius: 50%;
     font-size: 30px;

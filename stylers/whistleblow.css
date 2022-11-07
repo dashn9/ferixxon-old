@@ -53,6 +53,12 @@ label.text {
     text-decoration-color: #ffb618;
     -moz-text-decoration-color: #ffb618;
 }
+.error {
+    color: red;
+}
+.success, .success a {
+    color: #34b514;
+}
 input.text, textarea.text {
     width: 95%;
     margin-top: 2%;

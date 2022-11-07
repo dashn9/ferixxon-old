@@ -270,7 +270,7 @@ footer .sub-divs ul li a {
   margin-left: 22px;
   cursor: pointer;
 }
-.sub-divs ul li:hover a {
+.sub-divs ul li a:hover {
   color: #ffb618;
 }
 footer #footer-foot {
@@ -281,6 +281,9 @@ footer #footer-foot {
   padding: 1%;
   margin-bottom: 0;
   font-size: 13px;
+}
+#icons8-link {
+  color: #1FB141;
 }
 @media screen and (max-width: 720px) {
   .nav-links-division nav ul li .nav-links-icons {

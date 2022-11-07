@@ -5,7 +5,7 @@ class activity_controller
 
     function __construct($user_id, $username, $acc_bal)
     {
-        $this->open_set_session($user_id, $username, $acc_bal, "http://mnd/account.php");
+        $this->open_set_session($user_id, $username, $acc_bal, "https://www.ferixxon.com/account.php");
     }
     function open_set_session($user_id, $username, $acc_bal, $redirect)
     {
@@ -32,7 +32,7 @@ class signin_details_dealer
     const HOST_NAME = "localhost",
         DATABASE_NAME = "youxerze",
         SQL_USERNAME = "phantom",
-        SQL_PASSWORD = "thix cervixe ez fer de origeeneated cervixe oonly";
+        SQL_PASSWORD = "tKD5KZ4K9\$M@";
 
     //User information variables
     private $e_mail_telephone_number, $password;
@@ -254,7 +254,7 @@ class signin_validator_processor
 session_name("user");
 session_start();
 if (isset($_SESSION["UNQ_ID"])) {
-    header("Location: http://mnd/account.php", true, "301");
+    header("Location: https://www.ferixxon.com/account.php", true, "301");
 }
 $signin_validator = new signin_validator_processor();
 ?>
@@ -270,8 +270,8 @@ $signin_validator = new signin_validator_processor();
 </head>
 
 <body>
-<a href="http://mnd" class="mnd-logo"><img src="/images/ferixxon-logo-1.png" alt="ferixxon log" width="20%" /></a>
-    <form id="login-form" action="login.php" method="post" onSubmit="return loginElementsValidators.validateAllFormInput()">
+<a href="https://www.ferixxon.com/" class="fxn-logo"><img src="/images/ferixxon-logo-1.png" alt="ferixxon log" width="20%" /></a>
+    <form id="login-form" action="signin" method="post" onSubmit="return loginElementsValidators.validateAllFormInput()">
         <h3>Sign In</h3>
         <div class="input-division">
             <label class="form-labels" for="id-email">EMAIL / TEL NUMBER: </label>
@@ -286,33 +286,39 @@ $signin_validator = new signin_validator_processor();
         <div class="input-division">
             <input type="submit" id="id-submit-form" value="proceed >>>" />
         </div>
-        <span id="no-account">Do not have an account yet? <a href="signup.php">Sign Up</a> .</span>
+        <span id="no-account">Do not have an account yet? <a href="register">Sign Up</a> .</span>
     </form>
     
     <footer class="footer-t-bg">
-        <div class="sub-divs footer-group-1">
+	<div class="sub-divs footer-group-1">
             <ul>
-                <li><a>Home</a></li>
-                <li><a>Terms of Use</a></li>
-                <li><a>About Us</a></li>
+                <li><img src="./front-icons/icons8-home-30-grey.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /><a href="https://www.ferixxon.com/">Home</a></li>
+                <li><img src="./front-icons/icons8-terms-and-conditions-24-grey.png" width="16px" height="16px" alt="Terms of Use Icon - Ferixxon" /><a>Terms of Use</a></li>
+                <li><img src="./front-icons/icons8-about-30-grey.png" width="16px" height="16px" alt="About Us Icon - Ferixxon" /><a>About Us</a></li>
             </ul>
         </div>
         <div class="sub-divs footer-group-2">
             <ul>
-                <li><a>Contact Us</a></li>
-                <li><a>Enlist your business</a></li>
-                <li><a>Whistleblower</a></li>
-                <li><a>Raise a Suggestion</a></li>
+                <li><img src="./front-icons/icons8-contact-us-24-grey.png" width="16px" height="16px" alt="Contact Us Icon - Ferixxon" /><a href="https://www.ferixxon.com/contact" >Contact Us</a></li>
+                <li><img src="./front-icons/icons8-small-business-30-grey.png" width="16px" height="16px" alt="Business Icon - Ferixxon" /><a href="https://www.ferixxon.com/enlist-your-business" >Enlist your business</a></li>
+                <li><img src="./front-icons/icons8-whistle-60-grey.png" width="16px" height="16px" alt="Whistle Icon - Ferixxon" /><a href="https://www.ferixxon.com/whistle-blower" >Whistleblower</a></li>
+                <li><img src="./front-icons/icons8-idea-30-grey.png" width="16px" height="16px" alt="Idea(Suggestion) - Ferixxon" /><a>Raise a Suggestion</a></li>
             </ul>
         </div>
         <div class=" sub-divs footer-group-3">
             <ul>
-                <li><a>Newsletter Subscription</a></li>
-                <li><a>Offers and Promotions</a></li>
-                <li>Follow Us: </li>
+                <li><img src="./front-icons/icons8-subscription-24-grey.png" width="16px" height="16px" alt="Subscription Icon - Ferixxon" /><a>Newsletter Subscription</a></li>
+                <li><img src="./front-icons/icons8-discount-30-grey.png" width="16px" height="16px" alt="Promotion Icon - Ferixxon" /><a>Offers and Promotions</a></li>
+                <li id="follow-us"><img src="./front-icons/icons8-love-circled-24-grey.png" width="16px" height="16px" alt="Follow(Love) Icon - Ferixxon" />Follow us:
+                    <div class="follow-elements-bar">
+                        <a><img src="./front-icons/icons8-instagram-50-grey.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /></a>
+                        <a><img src="./front-icons/icons8-facebook-50-grey.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /></a>
+                        <a><img src="./front-icons/icons8-twitter-50-grey.png" width="16px" height="16px" alt="Home Icon - Ferixxon" /></a>
+                    </div>
+                </li>
+                <li><img src="./front-icons/icons8-icons8-24-grey.png" width="16px" height="16px" alt="Home Icon - Ferixxon" />Icons (<a href="./https://icons8.com" id="icons8-link">Icons 8</a>)</li>
             </ul>
         </div>
-
         <p id="footer-foot">All rights reserved &copy; ferixxon | 2022</p>
     </footer>
 </body>
