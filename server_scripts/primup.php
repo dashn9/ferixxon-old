@@ -2,12 +2,11 @@
 
 class image_processor
 {
-    //Database login credentials
     private
     const HOST_NAME = "localhost",
         DATABASE_NAME = "youxerze",
         SQL_USERNAME = "phantom",
-        SQL_PASSWORD = "thix cervixe ez fer de origeeneated cervixe oonly";
+        SQL_PASSWORD = "tKD5KZ4K9\$M@";
 
     //File/Image basic information stored in variables
     private $image_file_location, $image_name, $image_mime, $image_size;

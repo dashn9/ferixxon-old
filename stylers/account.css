@@ -12,6 +12,7 @@ body {
   margin: 0;
   font-family: "Roboto Light";
   height: 100vh;
+  background: rgba(254, 254, 254);
   overflow: hidden;
 }
 .message-overlay {
@@ -404,20 +405,8 @@ body {
   margin-left: 2%;
   cursor: pointer;
 }
-#account-information-content .title-bar h1 {
-  font-weight: 600;
-  color: #222;
-}
-#account-information-content .header-bar .mnd-logo {
-  display: inline-block;
-  width: 16%;
-  margin-left: 80%;
-  margin-top: 3%;
-}
-.mnd-logo img {
-  width: 100%;
-}
-#account-information-content .header-bar .title-bar h1:first-of-type {
+.title-bar-head {
+  font-family: "Open Sans";
   font-size: 15px;
   color: #555;
   margin-top: 3%;
@@ -428,6 +417,15 @@ body {
   border-top: 2px solid #ffb618;
   margin-left: 5%;
   margin-bottom: -1px;
+}
+.fxn-logo {
+  display: block;
+  width: 16%;
+  margin-left: 80%;
+  margin-top: 3%;
+}
+.fxn-logo img {
+  width: 100%;
 }
 #account-information-content .header-bar #head-account-information {
   margin: 3% auto 5%;
@@ -482,6 +480,7 @@ body {
   margin: 5% auto 0;
 }
 .body-bar .account-information-sub {
+  background: #fff;
   box-shadow: 0 1px 4px 4px rgba(225, 225, 225, 0.55);
   display: inline-block;
   padding: 1.5%;
@@ -591,6 +590,120 @@ body {
 #account-details-save:active {
   box-shadow: none;
 }
+#recharge-bar {
+  background: #fff;
+  width: 60%;
+  margin: 5% auto 0;
+  text-align: center;
+  border: 3px dashed #999;
+  padding: 13% 0;
+}
+#recharge-pick-up-line {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  width: 80%;
+  display: inline-block;
+}
+.rb-inputs {
+  width: 80%;
+  padding: 2%;
+  text-align: center;
+  margin: 2% 0;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.recharge-amount-input {
+  border: 3px solid #ffb618;
+  background: #fff7e8;
+}
+.recharge-payment-trigger {
+  background: #ff5a34;
+  color: #fff;
+  cursor: pointer;
+  box-sizing: content-box;
+}
+.recharge-payment-trigger:hover {
+  opacity: 0.9;
+}
+.recharge-payment-trigger:active {
+  width: 78%;
+  padding: 1.9%;
+}
+#orders-history {
+  margin-left: 5%;
+  width: 90%;
+  margin-bottom: 5%;
+}
+#inner-orders-history {
+  height: 100%;
+}
+#inner-orders-history h2 {
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 7%;
+  border-bottom: 4px solid #ff5a34;
+}
+.orders-segment {
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+.yellow-indicator {
+  padding: 8px;
+  background: rgb(255, 244, 31);
+  position: absolute;
+}
+.red-indicator {
+  padding: 8px;
+  background: rgb(252, 0, 0);
+  position: absolute;
+}
+#orders-history #oh-header {
+  margin-left: 0;
+}
+.orders-bar {
+  background: #fff;
+  padding: 2%;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(147, 147, 147, 0.25);
+  width: 40%;
+  position: relative;
+}
+.order-main-infos {
+  margin-left: 10%;
+  font-weight: bolder;
+}
+#inner-saved-orders {
+  width: 75%;
+  margin: 0 auto;
+}
+.saved-order-bar {
+  background: #fff;
+  padding: 2%;
+  border-radius: 4px;
+  box-shadow: 0 0 3px 2px rgba(177, 177, 177, 0.35);
+  position: relative;
+  margin: 6% auto 0;
+}
+.saved-order-bar .delete-saved-order {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  width: 35px;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 4px 1px #d0d0d0;
+}
+.delete-saved-order:active {
+  box-shadow: inset 0 0 4px 1px #d0d0d0;
+}
 @media screen and (max-width: 1000px) {
   #user-light-details > #user-image {
     width: 110px;
@@ -692,7 +805,7 @@ body {
   #account-links-nav > ul li a {
     font-size: 11px;
   }
-  #account-information-content .header-bar .mnd-logo {
+  #account-information-content .header-bar .fxn-logo {
     width: 24%;
     margin-left: 72%;
   }
@@ -721,7 +834,7 @@ body {
   }
 }
 @media screen and (max-width: 500px) {
-  #account-information-content .header-bar .mnd-logo {
+  #account-information-content .header-bar .fxn-logo {
     width: 28%;
     margin-left: 68%;
   }

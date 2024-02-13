@@ -329,6 +329,7 @@ var cartPageHandler = {
 var cartProcessor = {
     currentPage: 1,
     fowardPage: function () {
+        console.log(cartProcessor.currentPage);
         if (cartPageHandler.validateDeliveryDetails() && !cartPageHandler.subPageTransitionLock) {
             cartProcessor.currentPage += 1;
             cartPageHandler.changePageState(this.currentPage);

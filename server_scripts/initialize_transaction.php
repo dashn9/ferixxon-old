@@ -139,7 +139,7 @@ class transaction_initializer {
 		$it_pdo_sql->bindValue(":order_reference", $order_reference);
 		$it_pdo_sql->bindValue(":full_response", json_encode($order_response));
 		$it_pdo_sql->bindValue(":ip_address", $_SERVER["REMOTE_ADDR"]);
-		$it_pdo_sql->bindValue(":user_agent", $_SERVER["HTTP_USER_AGENT"]);
+		$it_pdo_sql->bindValue(":user_agent", htmlspecialchars($_SERVER["HTTP_USER_AGENT"]));
 
 		return $it_pdo_sql->execute();
 
@@ -147,7 +147,7 @@ class transaction_initializer {
 	function auto_initiate_transaction($user_id, $address, $email, $tel, $cart, $order_total, $order_title, $order_description) {
 		$order_info = $this->initiate_transaction($order_total, $email);
 		if($order_info["status"]) {
-			#$this->save_transaction($user_id, $address, $email, $tel, $order_title, $order_total, $order_description, $this->generate_serial(), $order_info["data"]["access_code"], $order_info["data"]["reference"], $order_info, $cart);
+			$this->save_transaction($user_id, $address, $email, $tel, $order_title, $order_total, $order_description, $this->generate_serial(), $order_info["data"]["access_code"], $order_info["data"]["reference"], $order_info, $cart);
 			return $order_info["data"]["access_code"];
 		}
 		else {
@@ -203,7 +203,7 @@ if(isset($_POST["addr"], $_POST["email"], $_POST["tel"], $_POST["order_title"], 
 		$transaction_amount = $_SESSION["USER_ORDER_PRICE"];
 		$user_id = 0;
 		if(isset($_SESSION["UNQ_ID"])) {
-			$user_id = isset($_SESSION["UNQ_ID"]);
+			$user_id = $_SESSION["UNQ_ID"];
 		}
 		$t_initer = new transaction_initializer();
 		$access_code = $t_initer->auto_initiate_transaction($user_id, $addr, $email, $tel, $cart, $transaction_amount, $order_title, $order_desc);

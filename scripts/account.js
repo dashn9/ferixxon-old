@@ -8,6 +8,60 @@ const CANVASPARENTHEIGHT = 400;
 var accountDetails = {
 
 };
+class AjaxCommunicator {
+    constructor(url, callback, message = null, method = "post", contentType = "application/x-www-form-urlencoded") {
+        this.xhr = this.createXhr();
+        this.url = url;
+        this.callBack = callback;
+        this.message = message;
+        this.method = method;
+        this.contentType = contentType;
+    }
+    resetAjax() {
+        this.xhr = this.createXhr();
+    }
+    initiateCommunication() {
+        var _this = this;
+        customPrompts.enableLoadingModal();
+        function xhrReady() {
+            customPrompts.disableLoadingModal();
+            if (this.readyState == 4 && this.status == 200) {
+                if (_this.callBack) {
+                    _this.callBack(this.responseText);
+                }
+                else {
+                    customPrompts.alert("Server communication has been successful");
+                }
+            }
+        }
+        if (this.method == "post") {
+            this.xhr.open("POST", this.url, true);
+            this.xhr.setRequestHeader("Content-type", this.contentType);
+            this.xhr.onreadystatechange = xhrReady;
+            this.xhr.send(this.message);
+        }
+        else if (this.method == "get") {
+            this.xhr.open("GET", this.url + "?" + this.message, true);
+            this.xhr.setRequestHeader("Content-type", this.contentType);
+            this.xhr.onreadystatechange = xhrReady;
+            this.xhr.send(null);
+        }
+        else {
+            customPrompts.alert("Unacceptable method of server communication");
+        }
+    }
+    createXhr() {
+        try {
+            return new XMLHttpRequest();
+        } catch (exception) {
+            try {
+                return new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (exception) {
+                return new ActiveXObject("Msxml2.XMLHTTP");
+            }
+        }
+    };
+}
 var customPrompts = {
     messager: document.getElementsByClassName("message-overlay")[0],
     interactionBlocker: document.getElementById("interaction-blocker"),
@@ -68,6 +122,12 @@ var customPrompts = {
         customPrompts.messager.classList.remove("message-overlay-active");
         customPrompts.interactionBlocker.style.display = "none";
     },
+    enableLoadingModal: () => {
+        document.getElementsByClassName("horizontal-loader")[0].style.display = "block";
+    },
+    disableLoadingModal: () => {
+        document.getElementsByClassName("horizontal-loader")[0].style.display = "none";
+    }
 };
 var accountInformationProcessor = {
     editTrigger: document.getElementsByClassName("edit-icon"),
@@ -134,13 +194,13 @@ var accountInformationProcessor = {
     sendData: () => {
         accountInformationProcessor.ajax = accountInformationProcessor.createXhr();
         accountInformationProcessor.ajax.open("POST", "/server_scripts/account_details_updater.php", true);
-        document.getElementsByClassName("horizontal-loader")[0].style.display = "block";
+        customPrompts.enableLoadingModal();
         customPrompts.interactionBlocker.style.display = "block";
         accountInformationProcessor.ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         accountInformationProcessor.ajax.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 accountInformationProcessor.processResponse(this.responseText);
-                document.getElementsByClassName("horizontal-loader")[0].style.display = "none";
+                customPrompts.disableLoadingModal();
                 customPrompts.interactionBlocker.style.display = "none";
             }
         };
@@ -326,6 +386,19 @@ var accountInformationProcessor = {
         else {
             customPrompts.prompt("Enter an address", "Address", addAddress);
         }
+    },
+    deleteSavedOrder: (event) => {
+        function responseProcessor(data) {
+            if (data) {
+                customPrompts.alert("The saved order has successfully been deleted");
+                event.target.parentElement.parentElement.removeChild(event.target.parentElement);
+            }
+            else {
+                customPrompts.alert("Something went wrong while trying to delete the saved order");
+            }
+        }
+        let ajx = new AjaxCommunicator("/server_scripts/remove_so/", responseProcessor, `saved-cart-id=${event.target.getAttribute("data-so-id")}`);
+        ajx.initiateCommunication();
     },
     hideSideBar() {
         document.getElementById("account-links-aside-nav").style.left = "-50%";
@@ -603,5 +676,84 @@ var imageHandler = {
     }
     document.getElementById("image-submit-button").onclick = function() {
         imageHandler.cropAndUploadImage();
+    }
+}
+var pageActivator = {
+    accountInformationPage: document.getElementById("account-information-content"),
+    rechargeAccountPage: document.getElementById("recharge-account"),
+    ordersHistoryPage: document.getElementById("orders-history"),
+    savedOrdersPage: document.getElementById("saved-orders"),
+    deactivateAccountInformationPage: () => {
+        pageActivator.accountInformationPage.style.display = "none";
+    },
+    deactivateRechargeAccountPage: () => {
+        pageActivator.rechargeAccountPage.style.display = "none";
+    },
+    deactivateOrdersHistoryPage: () => {
+        pageActivator.ordersHistoryPage.style.display = "none";
+    },
+    deactivateSavedOrdersPage: () => {
+        pageActivator.savedOrdersPage.style.display = "none";
+    },
+    deactivateAllPages: () => {
+        pageActivator.deactivateAccountInformationPage();
+        pageActivator.deactivateRechargeAccountPage();
+        pageActivator.deactivateOrdersHistoryPage();
+        pageActivator.deactivateSavedOrdersPage();
+    },
+    activateAccountInformationPage: () => {
+        pageActivator.deactivateAllPages();
+        pageActivator.accountInformationPage.style.display = "block";
+    },
+    activateRechargeAccountPage: () => {
+        pageActivator.deactivateAllPages();
+        pageActivator.rechargeAccountPage.style.display = "block";
+    },
+    activateOrdersHistoryPage: () => {
+        pageActivator.deactivateAllPages();
+        pageActivator.ordersHistoryPage.style.display = "block";
+    },
+    activateSavedOrdersPage: () => {
+        pageActivator.deactivateAllPages();
+        pageActivator.savedOrdersPage.style.display = "block";
+    },
+    initRechargePayment: () => {
+        function referenceProcessor(response) {
+            response = JSON.parse(response);
+            if (response["status"] == "ERR") {
+                customPrompts.alert(response["msg"]);
+                return false;
+            }
+            else if(response["status"] = "SUCC") {
+                pageActivator.activatePaystack(response["amt"], response["ref"]);
+                return true;
+            }
+            customPrompts.alert("An unprecdented error might have occurred, if error persist - contact administrator");
+            return false;
+        }
+        let ajx = new AjaxCommunicator("/server_scripts/init_recharge?amount="+document.getElementById('recharge-amount').value, referenceProcessor, null, "get");
+        ajx.initiateCommunication();
+    },
+    activatePaystack: (amount, txref) => {
+        function setUpPaystack() {
+            var handler = PaystackPop.setup({
+                key: 'pk_test_29e1fa3c67cacd4a1bc861e86f046f1df4bcae62',
+                email: document.getElementById('bsi-email-value').textContent || document.getElementById('bsi-email-value').innerText,
+                amount: amount, // the amount value is multiplied by 100 to convert to the lowest currency unit
+                currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
+                ref: txref, // Replace with a reference you generated
+                callback: function(response) {
+                //this happens after the payment is completed successfully
+                var reference = response.reference;
+                alert('Payment complete! Reference: ' + reference);
+                // Make an AJAX call to your server with the reference to verify the transaction
+                },
+                onClose: function() {
+                alert('Transaction was not completed, window closed.');
+                },
+            });
+            handler.openIframe();
+        }
+        setUpPaystack();
     }
 }

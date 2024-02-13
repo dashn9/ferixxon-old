@@ -191,48 +191,48 @@ var animateImageSlide = {
 };
 
 var customPrompts = {
-    messager: document.getElementsByClassName("message-overlay")[0],
+    messenger: document.getElementsByClassName("message-overlay")[0],
     interactionBlocker: document.getElementById("interaction-blocker"),
     centerLoadingModal: document.getElementById("loading-wrapper"),
     confirm: (question, yesCallBack, noCallBack) => {
-        let messager = customPrompts.messager;
+        let messenger = customPrompts.messenger;
         customPrompts.interactionBlocker.style.display = "block";
-        messager.children[2].style.display = "none";
-        messager.children[3].style.display = "block";
-        messager.children[1].innerHTML = question;
-        messager.classList.add("message-overlay-active");
+        messenger.children[2].style.display = "none";
+        messenger.children[3].style.display = "block";
+        messenger.children[1].innerHTML = question;
+        messenger.classList.add("message-overlay-active");
 
-        messager.lastElementChild.lastElementChild.onclick = function () {
-            customPrompts.messager.classList.remove("message-overlay-active");
+        messenger.lastElementChild.lastElementChild.onclick = function () {
+            customPrompts.messenger.classList.remove("message-overlay-active");
             customPrompts.interactionBlocker.style.display = "none";
             if (noCallBack) {
                 noCallBack();
             }
         };
 
-        messager.lastElementChild.firstElementChild.onclick = function () {
-            customPrompts.messager.classList.remove("message-overlay-active");
+        messenger.lastElementChild.firstElementChild.onclick = function () {
+            customPrompts.messenger.classList.remove("message-overlay-active");
             customPrompts.interactionBlocker.style.display = "none";
             yesCallBack();
         };
     },
     prompt: (statement, inputPlaceHolder, callBack, minInLen = 1, maxInLen = 20) => {
-        let messager = customPrompts.messager;
+        let messenger = customPrompts.messenger;
         customPrompts.interactionBlocker.style.display = "block";
-        messager.children[2].style.display = "block";
-        messager.children[3].style.display = "none";
-        messager.children[1].innerHTML = statement;
-        messager.classList.add("message-overlay-active");
+        messenger.children[2].style.display = "block";
+        messenger.children[3].style.display = "none";
+        messenger.children[1].innerHTML = statement;
+        messenger.classList.add("message-overlay-active");
 
 
-        messager.children[2].firstElementChild.placeholder = inputPlaceHolder;
-        messager.children[2].lastElementChild.onclick = function () {
+        messenger.children[2].firstElementChild.placeholder = inputPlaceHolder;
+        messenger.children[2].lastElementChild.onclick = function () {
 
-            if (messager.children[2].firstElementChild.value.length >= minInLen && messager.children[2].firstElementChild.value.length <= maxInLen) {
+            if (messenger.children[2].firstElementChild.value.length >= minInLen && messenger.children[2].firstElementChild.value.length <= maxInLen) {
                 customPrompts.interactionBlocker.style.display = "none";
-                customPrompts.messager.classList.remove("message-overlay-active");
-                callBack(messager.children[2].firstElementChild.value);
-                messager.children[2].firstElementChild.value = "";
+                customPrompts.messenger.classList.remove("message-overlay-active");
+                callBack(messenger.children[2].firstElementChild.value);
+                messenger.children[2].firstElementChild.value = "";
             }
             else {
                 customPrompts.alert("The minimum length of your input must be " + minInLen + ", maximum is " + maxInLen);
@@ -240,15 +240,15 @@ var customPrompts = {
         };
     },
     alert: (statement) => {
-        let messager = customPrompts.messager;
+        let messenger = customPrompts.messenger;
         customPrompts.interactionBlocker.style.display = "block";
-        messager.children[2].style.display = "none";
-        messager.children[3].style.display = "none";
-        messager.children[1].innerHTML = statement;
-        messager.classList.add("message-overlay-active");
+        messenger.children[2].style.display = "none";
+        messenger.children[3].style.display = "none";
+        messenger.children[1].innerHTML = statement;
+        messenger.classList.add("message-overlay-active");
     },
-    hideMessager: () => {
-        customPrompts.messager.classList.remove("message-overlay-active");
+    hideMessenger: () => {
+        customPrompts.messenger.classList.remove("message-overlay-active");
         customPrompts.interactionBlocker.style.display = "none";
     },
     enableLoadingModal: () => {
@@ -263,7 +263,7 @@ var orderProcessor = {
 
     orderChildElement: document.getElementById("orders"),
 
-    messager: document.getElementById("message-overlay"),
+    messenger: document.getElementById("message-overlay"),
 
     totalValue: document.getElementById("total-value"),
 
@@ -424,9 +424,9 @@ var orderProcessor = {
     },
 
 
-    hideMessager: () => {
+    hideMessenger: () => {
 
-        orderProcessor.messager.style.display = "none";
+        orderProcessor.messenger.style.display = "none";
 
     },
 
@@ -593,7 +593,7 @@ var orderProcessor = {
             }
 
         }
-        orderProcessor.hideMessager();
+        orderProcessor.hideMessenger();
 
         orderProcessor.saveCart();
 
@@ -603,9 +603,9 @@ var orderProcessor = {
 
     chooseBatch: (productNid) => {
 
-        orderProcessor.messager.style.display = "block";
+        orderProcessor.messenger.style.display = "block";
 
-        let messengerChild = orderProcessor.messager.firstElementChild.children[1];
+        let messengerChild = orderProcessor.messenger.firstElementChild.children[1];
 
         messengerChild.innerHTML = "";
 
@@ -640,12 +640,10 @@ var orderProcessor = {
 
 
     },
+    activateSelectionBox: (headerText) => {
+        orderProcessor.messenger.style.display = "block";
 
-    deleteBatch: () => {
-
-        orderProcessor.messager.style.display = "block";
-
-        let messengerChild = orderProcessor.messager.firstElementChild.children[1];
+        let messengerChild = orderProcessor.messenger.firstElementChild.children[1];
 
         messengerChild.innerHTML = "";
 
@@ -653,12 +651,14 @@ var orderProcessor = {
 
         elementChild.setAttribute("class", "message-topic");
 
-        elementChild.appendChild(document.createTextNode("Which batch do you intend on deleting?"));
+        elementChild.appendChild(document.createTextNode(headerText));
 
         messengerChild.appendChild(elementChild);
 
-
-
+        return messengerChild;
+    },
+    deleteBatch: () => {
+        messengerChild = orderProcessor.activateSelectionBox("Which batch do you intend on deleting?");
         for (let key in cart) {
 
             elementChild = document.createElement("Button");
@@ -669,7 +669,7 @@ var orderProcessor = {
 
             elementChild.onclick = function () {
 
-                orderProcessor.hideMessager();
+                orderProcessor.hideMessenger();
 
                 customPrompts.confirm("Are you sure you want to delete the BATCH: " + cart[key][0], function () { cart.splice(key, 1); orderProcessor.saveCart(); orderProcessor.displayOrder(); });
 
@@ -680,8 +680,6 @@ var orderProcessor = {
 
         }
 
-
-
     },
     addToOrder: async (productNid, toReturn, batchKey) => {
 
@@ -690,7 +688,6 @@ var orderProcessor = {
             //You can optimize the code in the future by directly parsing after retrieiving rather than sending to other objects to parse for themselves
 
             let requestedKitchenMenuJSON = JSON.parse(orderProcessor.requestedKitchenMenuJSON);
-
             for (let kEl in requestedKitchenMenuJSON) {
 
                 if (requestedKitchenMenuJSON[kEl].nid == productNid) {
@@ -721,7 +718,6 @@ var orderProcessor = {
             }))[0];
 
             if (toReturn) {
-
                 return orderProcessor.createOrderChildElement(requestedProductDetails.title, requestedProductDetails.ppu, batchKey, productNid);
 
             } else {
@@ -858,7 +854,26 @@ var orderProcessor = {
 
     },
     retrieveCartsFromAccount: () => {
-
+        function retrievedCartsProcessor(response) {
+            response = JSON.parse(response);
+            if (response["status"] == "ERR") {
+                customPrompts.alert(response["msg"]);
+                return false;
+            }
+            messengerChild = orderProcessor.activateSelectionBox("Which of your saved carts will you like to load");
+            for (let key in response) {
+                elementChild = document.createElement("Button");
+                elementChild.appendChild(document.createTextNode(response[key][0]));
+                elementChild.setAttribute("class", "select-batch");
+                elementChild.onclick = function () {
+                    orderProcessor.hideMessenger();
+                    customPrompts.confirm("Please confirm", function () {cart = JSON.parse(response[key][1]); orderProcessor.displayOrder(); });
+                }
+                messengerChild.appendChild(elementChild);
+            }
+        };
+        let ajx = new AjaxCommunicator("/server_scripts/retrieve_saved_carts_for_user", retrievedCartsProcessor, null, "get");
+        ajx.initiateCommunication();
     },
     saveCartToAccount: () => {
         function saveCart(cartTitle) {

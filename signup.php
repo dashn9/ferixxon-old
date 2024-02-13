@@ -64,7 +64,7 @@ class signup_details_dealer {
 		//Finally executing the prepared statement
 		$this->pdo_for_user_registration_sql->execute();
         
-        header("Location: http://mnd.localhost");
+        header("Location: https://www.ferixxon.com/user_dashboard");
 	}
 
 	//Use filer var to validate mail return true(true) if email if valid and 0(false) if its not.

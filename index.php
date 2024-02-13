@@ -33,13 +33,13 @@ if (isset($_SESSION["UNQ_ID"])) {
     <div id="direct-sub-body">
         <div id="message-overlay">
             <div id="message-overlay-sub">
-                <img class="exit-image" src="./front-icons/icons8-delete-24.png" onclick="orderProcessor.hideMessager()" />
+                <img class="exit-image" src="./front-icons/icons8-delete-24.png" onclick="orderProcessor.hideMessenger()" />
                 <div id="message-body"></div>
             </div>
         </div>
         <div id="interaction-blocker"></div>
         <div class="message-overlay">
-            <img class="exit-image" src="front-icons/icons8-delete-24.png" onclick="customPrompts.hideMessager()" />
+            <img class="exit-image" src="front-icons/icons8-delete-24.png" onclick="customPrompts.hideMessenger()" />
             <div id="message-body">Are you sure?</div>
             <div id="input"><input type="text" required /><button id="submit-message-input">Submit</button></div>
             <div id="message-response"><button id="button-one">Yes</button><button id="button-two">No</button></div>
@@ -70,7 +70,7 @@ if (isset($_SESSION["UNQ_ID"])) {
                         $account_html_username = "
                 <div id=\"account\">
                     <span>
-                    <img src=\"/front-icons/icons8-user-30.png\" width=\"15px\"  alt=\"User Icon\" /><a href=\"\account.php\">"
+                    <img src=\"/front-icons/icons8-user-30.png\" width=\"15px\"  alt=\"User Icon\" /><a href=\"\user_dashboard\">"
                             . $username  .
                             "</a></span>
                     <div class=\"account-sub\">
@@ -86,7 +86,7 @@ if (isset($_SESSION["UNQ_ID"])) {
                         </div>
                         <div class=\"account-second-sub\">
                             <p>
-                            <a href=\"\account.php\">
+                            <a href=\"\user_dashboard\">
                                 Account Dashboard
                             </a>
                             </p>

@@ -6,4 +6,10 @@ RewriteRule ^register signup.php
 RewriteRule ^contact contact-us.php
 RewriteRule ^enlist-your-business business-enlist.php
 RewriteRule ^whistle-blower wb.php
+RewriteRule ^user_dashboard account.php
+RewriteRule ^server_scripts/retrieve_saved_carts_for_user server_scripts/saved_carts_retriever.php
 RewriteRule ^server_scripts/init_payment server_scripts/initialize_transaction.php
+RewriteRule ^server_scripts/init_recharge server_scripts/initialize_account_recharge.php
+RewriteRule ^server_scripts/remove_so server_scripts/delete-saved-cart.php
+RewriteRule ^works/orders_ground emps(employees)/orders.php
+RewriteRule ^works/works_sign_in emps(employees)/login.php

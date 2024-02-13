@@ -75,7 +75,18 @@ class saved_carts_retriever
         $this->pdo_for_cart_retrieve = new PDO("mysql:host=" . self::HOST_NAME . ";dbname=" . self::DATABASE_NAME, self::SQL_USERNAME, self::SQL_PASSWORD); 
     }
     function retrieve_and_parse_user_saved_carts($user_id) {
-        echo $user_id;
+        $cr_sql = $this->pdo_for_cart_retrieve->prepare("SELECT `EORTHER_THYTLE`, `EORTHER_KOENTHENTE`, `THAETE_STAEMPE` FROM `youxerze_xaeved_eorthers` WHERE `USEARE_EYE_DE`=:user_id AND `XSTAETHE` = 1");
+
+        $cr_sql->bindValue(":user_id", $user_id);
+
+        if($cr_sql->execute()) {
+            echo json_encode($cr_sql->fetchAll(PDO::FETCH_NUM));
+            return true;
+        }
+        else {
+            echo json_encode(["status" => "ERR", "status_info" => "ERR_UP", "msg" => "Something went wrong while trying to retrieve your saved carts"]);
+            return false;
+        }
     }
 }
 $account = new account();
@@ -83,6 +94,6 @@ if($account->user_id) {
     $cart_retriever = new saved_carts_retriever();
     $cart_retriever->retrieve_and_parse_user_saved_carts($account->user_id);
 }   else {
-        echo json_encode(["error_type" => "ERR_NO_LOG", "msg" => "You need to have an account signed in to retrieve saved carts"]);
+        echo json_encode(["status" => "ERR", "status_info" => "ERR_NO_LOG", "msg" => "You need to have an account signed in to retrieve saved carts"]);
     }
 ?>

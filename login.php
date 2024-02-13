@@ -5,7 +5,7 @@ class activity_controller
 
     function __construct($user_id, $username, $acc_bal)
     {
-        $this->open_set_session($user_id, $username, $acc_bal, "https://www.ferixxon.com/account.php");
+        $this->open_set_session($user_id, $username, $acc_bal, "https://www.ferixxon.com/user_dashboard");
     }
     function open_set_session($user_id, $username, $acc_bal, $redirect)
     {
@@ -254,7 +254,7 @@ class signin_validator_processor
 session_name("user");
 session_start();
 if (isset($_SESSION["UNQ_ID"])) {
-    header("Location: https://www.ferixxon.com/account.php", true, "301");
+    header("Location: https://www.ferixxon.com/user_dashboard", true, "301");
 }
 $signin_validator = new signin_validator_processor();
 ?>
