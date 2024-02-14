@@ -1,24 +1,27 @@
 @charset "utf-8";
+
 /* CSS Document */
 @font-face {
   font-family: "Roboto Light";
   src: url("/fonts/Roboto/Roboto-Light.ttf");
 }
-html {
-  overflow-x: hidden;
-}
-html, body {
+
+html,
+body {
   height: 100%;
   margin: 0;
 }
+
 body {
   background-color: rgba(251, 251, 251, 1);
   font-family: Roboto Light;
-  width: 100%;
 }
+
 #direct-sub-body {
-  min-height: 92%;
+  min-height: 95%;
+  overflow-x: hidden;
 }
+
 #message-overlay {
   position: fixed;
   top: 0;
@@ -29,6 +32,7 @@ body {
   z-index: 1000;
   display: none;
 }
+
 #message-overlay #message-overlay-sub {
   height: 60vh;
   width: 50%;
@@ -39,6 +43,7 @@ body {
   overflow-y: hidden;
   padding: 2%;
 }
+
 #message-overlay .exit-image {
   float: right;
   margin: -2%;
@@ -46,9 +51,11 @@ body {
   cursor: pointer;
   width: 18px;
 }
+
 #message-overlay .exit-image:active {
   box-shadow: none;
 }
+
 .message-overlay {
   width: 25%;
   min-height: 20vh;
@@ -61,6 +68,7 @@ body {
   border-radius: 6px;
   display: none;
 }
+
 #interaction-blocker {
   z-index: 999;
   position: fixed;
@@ -71,9 +79,11 @@ body {
   background: rgba(0, 0, 0, 0.4);
   display: none;
 }
+
 .message-overlay-active {
   display: block;
 }
+
 .message-overlay .exit-image {
   width: 20px;
   float: right;
@@ -81,9 +91,11 @@ body {
   opacity: 0.6;
   margin: 5%;
 }
+
 .message-overlay .exit-image:hover {
   opacity: 1;
 }
+
 .message-overlay #message-body {
   width: 70%;
   text-align: center;
@@ -94,12 +106,14 @@ body {
   font-weight: bolder;
   color: #555;
 }
+
 .message-overlay #input {
   width: 80%;
   text-align: center;
   margin: 10% auto 0;
   display: none;
 }
+
 .message-overlay #input input:first-of-type {
   border: none;
   outline: none;
@@ -108,6 +122,7 @@ body {
   width: 65%;
   display: inline-block;
 }
+
 .message-overlay #input button:first-of-type {
   margin-left: 5%;
   border: none;
@@ -121,13 +136,16 @@ body {
   cursor: pointer;
   display: inline;
 }
+
 .message-overlay #input button:first-of-type:hover {
   background-color: #ff7a54;
 }
+
 .message-overlay #input button:first-of-type:active {
   padding: 0.8%;
   width: 27%;
 }
+
 .message-overlay #message-response {
   width: 80%;
   margin: 0 auto;
@@ -135,6 +153,7 @@ body {
   margin-top: 10%;
   display: none;
 }
+
 #button-one,
 #button-two {
   border: none;
@@ -148,21 +167,26 @@ body {
   cursor: pointer;
   position: relative;
 }
+
 #button-one {
   float: left;
 }
+
 #button-two {
   float: right;
 }
+
 #button-one:hover,
 #button-two:hover {
   background: #ff7a54;
 }
+
 #button-one:active,
 #button-two:active {
   transition: width 2s linear;
   background: #ff5a34;
 }
+
 #message-body .message-topic {
   font-size: 24px;
   color: #444;
@@ -170,6 +194,7 @@ body {
   text-align: center;
   margin: 2% 0 0;
 }
+
 #message-body .select-batch {
   display: block;
   margin: 3.2% auto 0;
@@ -185,9 +210,11 @@ body {
   text-transform: uppercase;
   cursor: pointer;
 }
+
 #message-body .select-batch:active {
   box-shadow: none;
 }
+
 #message-body .prompt-yes-no-button {
   display: inline-block;
   margin: 10% 0 0 20%;
@@ -202,13 +229,16 @@ body {
   text-transform: uppercase;
   cursor: pointer;
 }
+
 #message-body .prompt-yes-no-button:hover {
   background: #ff5a34;
 }
+
 #sub-body {
   position: relative;
   height: 100%;
 }
+
 #sub-body .cart-toggler {
   box-shadow: 1px 1px 3px 3px #eee;
   display: none;
@@ -224,10 +254,12 @@ body {
   -ms-border-radius: 3px 0 0 3px;
   -o-border-radius: 3px 0 0 3px;
 }
+
 .cart-toggler img:first-of-type {
   width: 20px;
   height: 20px;
 }
+
 .images-slide-bar {
   width: 45%;
   margin-top: 3%;
@@ -237,6 +269,7 @@ body {
   overflow: hidden;
   background-color: #ddd;
 }
+
 .images-hold-slide {
   display: inline;
   white-space: nowrap;
@@ -245,10 +278,12 @@ body {
   font-size: 0;
   margin: 0;
 }
+
 .images-hold-slide img {
   width: 100%;
   margin-bottom: -2%;
 }
+
 .images-slide-bar #slide-text {
   color: white;
   z-index: 4;
@@ -256,10 +291,12 @@ body {
   font-size: 20px;
   margin-bottom: 2%;
 }
+
 .images-slide-bar #slide-text div:first-child {
   width: 70%;
   display: inline-block;
 }
+
 #images-slide-bar-overlay {
   position: absolute;
   width: 100%;
@@ -271,6 +308,7 @@ body {
   z-index: 3;
   display: none;
 }
+
 #image-slide-states-bar {
   bottom: 0;
   position: absolute;
@@ -280,6 +318,7 @@ body {
   text-align: center;
   z-index: 3;
 }
+
 #image-slide-states-bar .image-slide-state {
   border: 1.5px dashed #fff;
   border-radius: 100px;
@@ -291,10 +330,12 @@ body {
   margin-bottom: 2%;
   opacity: 0.8;
 }
+
 #image-slide-states-bar .image-slide-state:nth-child(2) {
   background-color: #fff;
   opacity: 1;
 }
+
 #orders-bar {
   width: 22%;
   box-sizing: border-box;
@@ -308,6 +349,7 @@ body {
   background: #fff;
   overflow: hidden;
 }
+
 #orders-bar h3 {
   margin-left: 3%;
   margin-bottom: 0;
@@ -316,6 +358,7 @@ body {
   border-bottom: 2px solid #ff5a34;
   display: inline-block;
 }
+
 #orders-bar #orders-buttons {
   display: inline-block;
   background: #f0f0f0;
@@ -326,18 +369,21 @@ body {
   text-align: center;
   margin: 4% 0;
 }
-#orders-bar > #orders-buttons > img {
+
+#orders-bar>#orders-buttons>img {
   width: 18px;
   height: 18px;
   padding: 1% 6% 0%;
   cursor: pointer;
 }
-#orders-bar > #orders {
+
+#orders-bar>#orders {
   max-height: 350px;
   overflow-y: auto;
   overflow-x: hidden;
 }
-#orders-bar > #orders > .batch > h4 {
+
+#orders-bar>#orders>.batch>h4 {
   margin-top: 2%;
   margin-left: 3%;
   margin-bottom: 0;
@@ -352,27 +398,32 @@ body {
   font-weight: lighter;
   white-space: pre;
 }
-#orders-bar > #orders > .batch > div:first-of-type {
+
+#orders-bar>#orders>.batch>div:first-of-type {
   width: 100%;
   height: 125px;
   overflow-y: visible;
   overflow-x: hidden;
 }
-#orders-bar > #orders .batch .order-elements {
+
+#orders-bar>#orders .batch .order-elements {
   padding: 2%;
   background: #efefef;
   opacity: 1;
   margin-top: 3%;
   margin-bottom: 3%;
 }
+
 .order-elements span {
   font-size: 13px;
   color: grey;
 }
+
 .order-elements span span {
   font-size: 13px;
   color: #ff5a34;
 }
+
 .order-elements input {
   float: right;
   border: none;
@@ -382,6 +433,7 @@ body {
   background: inherit;
   cursor: pointer;
 }
+
 #price-and-checkout {
   display: block;
   background: #ff5a34;
@@ -392,13 +444,16 @@ body {
   right: 0;
   left: 0;
 }
+
 #price-and-checkout #total-label {
   color: #555;
 }
+
 #price-and-checkout #total-value {
   color: white;
   font-size: 16px;
 }
+
 #price-and-checkout .checkout-button {
   float: right;
   color: #555;
@@ -414,31 +469,37 @@ body {
   cursor: pointer;
   border-radius: 4px;
 }
+
 #hr-after-image-slide {
   border: 2px dashed #bbb;
   margin-top: 3%;
   display: none;
 }
+
 #order-by-kitchen {
   width: 80%;
   margin-left: 10%;
 }
+
 #order-by-kitchen-header {
   font-size: 22px;
   margin-left: 0;
   margin-top: 5%;
   color: #777;
 }
+
 #order-by-kitchen-header span {
   border: none;
   border-bottom: 1px solid #ff5a34;
   padding-bottom: 4px;
 }
+
 .selection-and-adjustment-bar {
   width: 81%;
   background-color: #ff5a34;
   margin: 3% 0 0 0;
 }
+
 .kitchen-body-select {
   margin-top: 2%;
   margin-left: 2%;
@@ -453,22 +514,27 @@ body {
   width: 170px;
   text-align: center;
 }
-.kitchen-body-select > ul {
+
+.kitchen-body-select>ul {
   overflow-x: hidden;
 }
+
 .kitchen-body-select li {
   font-size: 14px;
   padding: 8px 4px 8px 3px;
   width: 100%;
 }
+
 .kitchen-body-select li:hover {
   background: #e7e7e7;
   color: #5c5c5c;
 }
+
 .kitchen-body-select li:first-of-type {
   display: inline-block;
   width: auto;
 }
+
 .kitchen-body-select-list {
   padding: 0;
   margin-top: 5px;
@@ -485,10 +551,12 @@ body {
   -o-transition: max-height 0.2s linear;
   -ms-transition: max-height 0.2s linear;
 }
+
 .kitchen-body-select-list li:first-of-type {
   width: 100%;
   display: block;
 }
+
 .kitchen-body-select-list-height-transitor {
   padding-left: 0px;
   box-shadow: 0px 0px 2px 1px #ddd;
@@ -499,6 +567,7 @@ body {
   -o-transition: max-height 0.2s linear;
   -ms-transition: max-height 0.2s linear;
 }
+
 .arrow {
   content: "";
   height: 0;
@@ -516,6 +585,7 @@ body {
   transform: rotate(45deg);
   transition: transform 0.2s linear;
 }
+
 .li-arrow-up {
   margin-bottom: -2px;
   -webkit-transform: rotate(-135deg);
@@ -524,6 +594,7 @@ body {
   transform: rotate(-135deg);
   transition: transform 0.2s;
 }
+
 #loading-wrapper {
   position: fixed;
   z-index: 99;
@@ -533,6 +604,7 @@ body {
   padding: 25px 20px 20px 10px;
   border-radius: 4px;
 }
+
 .loading-circle {
   display: none;
   background: white;
@@ -542,10 +614,12 @@ body {
   margin-top: -5px;
   margin-left: 10px;
 }
+
 .loading-circle-1 {
   display: inline-block;
 }
-.loading-circle > div {
+
+.loading-circle>div {
   padding: 9px;
   background: #ff5a34;
   border-radius: 50%;
@@ -556,7 +630,8 @@ body {
   animation-iteration-count: infinite;
   animation-timing-function: cubic-bezier(0.45, 0.15, 0.15, 0.45);
 }
-.loading-circle > div > div {
+
+.loading-circle>div>div {
   padding: 4px;
   background: #ffb618;
   border-radius: 50%;
@@ -564,6 +639,7 @@ body {
   top: -6px;
   margin-left: -4px;
 }
+
 @keyframes rotate-loader {
   0% {
     -o-transform: rotate(0deg);
@@ -571,6 +647,7 @@ body {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -o-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
@@ -578,14 +655,17 @@ body {
     transform: rotate(360deg);
   }
 }
+
 #order-by-kitchen-body {
   width: 78%;
   margin: 0;
 }
+
 .kitchens-body {
   width: 100%;
 }
-.kitchens-body > p:first-of-type {
+
+.kitchens-body>p:first-of-type {
   font-size: 13px;
   text-align: center;
   margin: 2% auto 0;
@@ -594,7 +674,8 @@ body {
   position: relative;
   width: fit-content;
 }
-.kitchens-body > p:first-of-type::before {
+
+.kitchens-body>p:first-of-type::before {
   content: "";
   width: 90%;
   position: absolute;
@@ -602,11 +683,13 @@ body {
   bottom: -4px;
   border: 1px solid #ff5a34;
 }
+
 .kitchens-head {
   text-align: left;
   padding-left: 3%;
 }
-.kitchens-head > h2:first-of-type {
+
+.kitchens-head>h2:first-of-type {
   font-weight: normal;
   font-size: 13px;
   margin-top: 0;
@@ -619,27 +702,31 @@ body {
   text-transform: uppercase;
   word-spacing: 5px;
 }
-.kitchens-body > .product-bar {
+
+.kitchens-body>.product-bar {
   background-color: #fff;
   box-shadow: 0px 0px 2px 2px #eee;
   margin-top: 50px;
   border-radius: 5px;
   position: relative;
 }
-.product-bar > h3 {
+
+.product-bar>h3 {
   padding: 5px;
   color: #ffb618;
   font-size: 14px;
   margin-bottom: 0;
 }
-.product-bar > p:nth-of-type(1) {
+
+.product-bar>p:nth-of-type(1) {
   margin-top: 0.15%;
   margin-bottom: 0;
   font-size: 13px;
   color: #777;
   padding: 5px;
 }
-.product-bar > p:nth-of-type(2) {
+
+.product-bar>p:nth-of-type(2) {
   margin-top: 0.15%;
   display: inline-block;
   font-size: 13px;
@@ -648,7 +735,8 @@ body {
   margin-bottom: 0;
   opacity: 0.6;
 }
-.kitchens-body > .product-bar > .buttons-bar {
+
+.kitchens-body>.product-bar>.buttons-bar {
   display: inline-block;
   width: 20%;
   position: absolute;
@@ -656,7 +744,8 @@ body {
   bottom: 4px;
   text-align: right;
 }
-.kitchens-body > .product-bar > .buttons-bar > .add-to-order-button {
+
+.kitchens-body>.product-bar>.buttons-bar>.add-to-order-button {
   background: #ff5a34;
   color: white;
   font-size: 13px;
@@ -670,62 +759,77 @@ body {
   transition: background;
   transition-duration: 1s;
 }
-.kitchens-body > .product-bar > .buttons-bar > .add-to-order-button:hover {
+
+.kitchens-body>.product-bar>.buttons-bar>.add-to-order-button:hover {
   background: #ffb618;
 }
+
 @media screen and (max-width: 1110px) {
   #orders-bar {
     min-height: 400px;
     max-height: 500px;
   }
-  #orders-bar > #orders {
+
+  #orders-bar>#orders {
     max-height: 280px;
   }
 }
+
 @media screen and (max-width: 910px) {
   #orders-bar {
     min-height: 350px;
     max-height: 450px;
     width: 23%;
   }
-  #orders-bar > #orders {
+
+  #orders-bar>#orders {
     max-height: 230px;
   }
+
   #price-and-checkout {
     height: 6%;
   }
 }
+
 @media screen and (max-width: 872px) {
   #orders-bar {
     min-height: 350px;
     max-height: 400px;
   }
-  #orders-bar > #orders {
+
+  #orders-bar>#orders {
     max-height: 250px;
   }
-  #orders-buttons > img {
+
+  #orders-buttons>img {
     padding: 1% 2% 0;
     max-width: 12px;
     max-height: 12px;
   }
-  #orders-bar > #orders > .batch > h4 {
+
+  #orders-bar>#orders>.batch>h4 {
     font-size: 12px;
   }
+
   .order-elements span,
   .order-elements span span {
     font-size: 10px;
   }
+
   .order-elements input {
     font-size: 10px;
     width: 20%;
     margin-top: 4%;
   }
+
   #price-and-checkout #total-label {
     font-size: 12px;
   }
+
   #price-and-checkout #total-value {
     font-size: 11px;
   }
+
   #price-and-checkout .checkout-button {
     font-size: 9px;
     min-width: 15%;
@@ -738,77 +842,99 @@ body {
     -ms-border-radius: 2px;
     -o-border-radius: 2px;
   }
+
   .kitchen-body-select li {
     font-size: 13px;
   }
+
   #orders-bar h3 {
     font-size: 14px;
   }
 }
+
 @media screen and (max-width: 700px) {
   #orders-bar {
     min-height: 280px;
     max-height: 290px;
   }
-  #orders-bar > #orders {
+
+  #orders-bar>#orders {
     max-height: 190px;
   }
+
   #order-by-kitchen-header {
     font-size: 14px;
   }
+
   #price-and-checkout .checkout-button {
     font-size: 7px;
     margin-top: 2.5%;
   }
-  .selection-and-adjustment-bar {
-    background: none;
-  }
+
   .kitchens-head {
     margin-top: -0.2%;
     text-align: center;
   }
-  .kitchens-head > h2:first-of-type {
+
+  .kitchens-head>h2:first-of-type {
     font-size: 11px;
   }
+
   .kitchen-body-select {
-    display: block;
-    margin: 0 auto;
     z-index: 2;
     background: #f8e8e5;
   }
-  .kitchens-body > p:first-of-type {
+
+  .kitchens-body>p:first-of-type {
     font-size: 11px;
   }
-  .kitchens-body > .product-bar {
+
+  .kitchens-body>.product-bar {
     box-shadow: none;
     border: none;
     border-top: 1px solid #ffb618;
     border-bottom: 1px solid #ffb618;
   }
+
   .kitchen-body-select li {
     font-size: 12px;
   }
+
   #orders-bar h3 {
     font-size: 14px;
   }
-  .kitchens-body > .product-bar {
+
+  .kitchens-body>.product-bar {
     margin-top: 15px;
   }
-  .product-bar > h3 {
+
+  .product-bar>h3 {
     font-size: 12px;
   }
-  .product-bar > p:nth-of-type(1) > p:first-of-type {
+
+  .product-bar>p:nth-of-type(1)>p:first-of-type {
     font-size: 11px;
     margin: 1%;
   }
-  .product-bar > p:nth-of-type(2) {
+
+  .product-bar>p:nth-of-type(2) {
     font-size: 11px;
   }
-  .kitchens-body > .product-bar > .buttons-bar > .add-to-order-button {
+
+  .kitchens-body>.product-bar>.buttons-bar>.add-to-order-button {
     font-size: 10px;
   }
 }
+
 @media screen and (max-width: 502px) {
+  .loading-circle {
+    padding: 4px;
+  }
+
+  .loading-circle>div {
+    padding: 6px;
+  }
+
   #orders-bar {
     top: 7vh;
     left: 105%;
@@ -817,55 +943,77 @@ body {
     width: 90%;
     min-height: 80vh;
     max-height: 80vh;
-    transition:left 1s linear  ;
-    -webkit-transition:left 1s linear  ;
-    -moz-transition:left 1s linear  ;
-    -ms-transition:left 1s linear  ;
-    -o-transition:left 1s linear  ;
-}
+    transition: left 1s linear;
+    -webkit-transition: left 1s linear;
+    -moz-transition: left 1s linear;
+    -ms-transition: left 1s linear;
+    -o-transition: left 1s linear;
+  }
+
   #orders-bar h3 {
     font-size: 16px;
   }
-  #orders-buttons > img {
+
+  #orders-buttons>img {
     padding: 1% 2% 0;
     max-width: 15px;
     max-height: 15px;
   }
+
   .order-elements input {
     margin-top: 0.5%;
     font-size: 11px;
   }
-  #orders-bar > #orders > .batch > h4 {
+
+  #orders-bar>#orders>.batch>h4 {
     font-size: 13px;
   }
+
   .order-elements span,
   .order-elements span span {
     font-size: 11px;
   }
+
   #sub-body .cart-toggler {
     display: inline-block;
   }
+
   .images-slide-bar {
     width: 90%;
     margin-left: 5%;
   }
-  #orders-bar > #orders {
+
+  #orders-bar>#orders {
     position: relative;
     max-height: 500px;
   }
+
+  #order-by-kitchen {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #order-by-kitchen-header {
+    margin-left: 10%;
+  }
+
   #order-by-kitchen-body {
     width: 95%;
     margin: 0 auto;
   }
+
   #price-and-checkout {
     height: 3%;
   }
+
   #price-and-checkout #total-label {
     font-size: 16px;
   }
+
   #price-and-checkout #total-value {
     font-size: 14px;
   }
+
   #price-and-checkout .checkout-button {
     font-size: 12px;
     min-width: 15%;
@@ -878,78 +1026,94 @@ body {
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
   }
+
   .selection-and-adjustment-bar {
-    background: none;
-    margin: 0 auto;
+    width: 100%;
+    margin: 5% auto 0;
   }
+
   .kitchens-head {
     display: none;
   }
+
   .kitchen-body-select {
-    display: block;
-    margin: 10% auto 0;
+    margin: 1%;
     z-index: 2;
     background: #ffb618;
     color: #fff;
   }
+
   .arrow {
     border-color: #ff5a34;
   }
+
   .kitchen-body-select-list-height-transitor {
     box-shadow: none;
   }
+
   .kitchen-body-select li:hover {
-    background-color: #fff;
+    background-color: inherit;
   }
-  .kitchens-body > .product-bar {
+
+  .kitchens-body>.product-bar {
     width: 80%;
     margin: 0 auto;
     border: none;
     box-shadow: 1px 1px 3px 3px #eee;
   }
-  .kitchens-body > .product-bar > .buttons-bar > .add-to-order-button {
+
+  .kitchens-body>.product-bar>.buttons-bar>.add-to-order-button {
     font-size: 8px;
     white-space: nowrap;
   }
+
   .kitchen-body-select li {
     font-size: 11px;
   }
-  .kitchens-body > .product-bar {
+
+  .kitchens-body>.product-bar {
     margin-top: 25px;
   }
 }
+
 @media screen and (max-height: 800px) {
-  #orders-bar > #orders {
+  #orders-bar>#orders {
     max-height: 475px;
   }
 }
+
 @media screen and (max-height: 750px) {
-  #orders-bar > #orders {
+  #orders-bar>#orders {
     max-height: 440px;
   }
 }
+
 @media screen and (max-height: 700px) {
-  #orders-bar > #orders {
+  #orders-bar>#orders {
     max-height: 400px;
   }
 }
+
 @media screen and (max-height: 650px) {
-  #orders-bar > #orders {
+  #orders-bar>#orders {
     max-height: 360px;
   }
 }
+
 @media screen and (max-height: 600px) {
-  #orders-bar > #orders {
+  #orders-bar>#orders {
     max-height: 320px;
   }
 }
+
 @media screen and (max-height: 550px) {
-  #orders-bar > #orders {
+  #orders-bar>#orders {
     max-height: 280px;
   }
 }
+
 @media screen and (max-height: 500px) {
-  #orders-bar > #orders {
+  #orders-bar>#orders {
     max-height: 240px;
   }
 }
