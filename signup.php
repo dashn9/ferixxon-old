@@ -1,4 +1,8 @@
 <?php
+
+require_once 'private/auth/email_verification.php';
+require_once 'private/notification/email_sender.php';
+
 //This class will be dealing with the signup operation only.
 class signup_details_dealer {
 	//Database login credentials
@@ -36,36 +40,49 @@ class signup_details_dealer {
 		$this->pdo_for_user_registration_sql->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 	}
 	//Using the system of the PDO to prepare values for database entry and also query them in
-	public
-
-	function prepare_user_for_database_entry_and_execute() {
+	public function prepare_user_for_database_entry_and_execute() {
 		//Check if email or phone number is properly valid else kill further code execution.
-		if ( !($this->validate_mail( $this->e_mail ) || $this->validate_telephone_number( $this->telephone_number )) ) {
+		if (!($this->validate_mail($this->e_mail) || $this->validate_telephone_number($this->telephone_number))) {
 			echo "ERR_EMAIL_PHONE_NUMBER_INVALIDATION";
-			exit( 0 );
+			exit(0);
 		}
+		
 		//Preparing the pdo for user registration - The next step is to bind value to the 'value indicators' indicated by words prefixed with ':'.
-		$this->pdo_for_user_registration_sql = $this->pdo_for_user_registration_sql->prepare( "INSERT INTO `youxerze_baexxic_enfor`(`FEASTE_NAEME`, `LAESTE_NAEME`, `EE_MEOWL`, `FEONE_NEIMBA`, `PAERXEWEIRDE`, `THAETE_HEAREGEISTEIRED`) VALUES (:first_name, :last_name, :e_mail, :phone_number, :password, NOW())" );
-
-		//Hashing Users password to help secure Users password in the event of a breach.(Good Security Practice)
-		$this->password = password_hash( $this->password, PASSWORD_DEFAULT );
-
-		//Binding information inputed by a user to 'value indicators' represented with words prefixed with ':'. Next step will be to execute the prepared statement
-		$this->pdo_for_user_registration_sql->bindValue( ":first_name", $this->name );
-
-		$this->pdo_for_user_registration_sql->bindValue( ":last_name", $this->last_name );
-
-		$this->pdo_for_user_registration_sql->bindValue( ":e_mail", $this->e_mail );
-
-		$this->pdo_for_user_registration_sql->bindValue( ":phone_number", $this->telephone_number );
-
-		// store password in plain text, to avoid issues during migration to python/django
-		$this->pdo_for_user_registration_sql->bindValue( ":password", $this->password );
-
+		$this->pdo_for_user_registration_sql = $this->pdo_for_user_registration_sql->prepare("INSERT INTO `youxerze_baexxic_enfor`(`FEASTE_NAEME`, `LAESTE_NAEME`, `EE_MEOWL`, `FEONE_NEIMBA`, `PAERXEWEIRDE`, `THAETE_HEAREGEISTEIRED`) VALUES (:first_name, :last_name, :e_mail, :phone_number, :password, NOW())");
+	
+		// Hashing Users password to help secure Users password in the event of a breach.(Good Security Practice)
+		// Had to comment this line out so there won't be any potential issues when we migrate Ferixxon to python/django. It's just for the moment
+		// $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+	
+		//Binding information inputted by a user to 'value indicators' represented with words prefixed with ':'. Next step will be to execute the prepared statement
+		$this->pdo_for_user_registration_sql->bindValue(":first_name", $this->name);
+		$this->pdo_for_user_registration_sql->bindValue(":last_name", $this->last_name);
+		$this->pdo_for_user_registration_sql->bindValue(":e_mail", $this->e_mail);
+		$this->pdo_for_user_registration_sql->bindValue(":phone_number", $this->telephone_number);
+		$this->pdo_for_user_registration_sql->bindValue(":password", $this->password);
+	
 		//Finally executing the prepared statement
-		$this->pdo_for_user_registration_sql->execute();
-        
-        header("Location: https://www.ferixxon.com/user_dashboard");
+		if ($this->pdo_for_user_registration_sql->execute()) {
+			// Execution successful, send out an email for email activation
+			$this->sendActivationEmail($this->e_mail, $this->name);
+			header("Location: https://www.ferixxon.com/user_dashboard");
+			exit;
+		} else {
+			echo "Error executing SQL statement";
+		}
+	}
+	
+	// Example method for sending activation email
+	private function sendActivationEmail($email, $name) {
+		$emailSender = new EmailSender();
+		$authenticator = new EmailVerifier();
+		try {
+			$message = $emailSender->activateEmailTemplate($name, $email, $authenticator->generateActivationReference($email)[1]);
+			$messageId = $emailSender->sendEmail(EmailSender::ALLOWED_SENDERS[0], $email, $message["subject"], $message["body"]);
+			echo $messageId;
+		} catch (Exception $e) {
+			error_log('Email sending error: ' . $e->getMessage());
+		}
 	}
 
 	//Use filer var to validate mail return true(true) if email if valid and 0(false) if its not.

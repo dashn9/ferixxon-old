@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/../config.php';
 
 use Aws\Ses\SesClient;
@@ -24,8 +23,7 @@ class EmailSender {
         ]);
     }
 
-    public function activateEmailTemplate(string $name = "", string $email, string $activation_reference) {
-        $activation_url = "https://www.ferixxon.com/email/activation/$activation_reference";
+    public function activateEmailTemplate(string $name = "", string $email, string $activation_url) {
         return [
             "subject" => "Activate Account", 
             "body" => "Hi, $name <br><br>

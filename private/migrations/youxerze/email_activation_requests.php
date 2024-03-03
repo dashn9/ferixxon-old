@@ -10,11 +10,11 @@ try {
     
     // Define your migration queries
     $migrationQueries = [
-        "CREATE TABLE IF EXISTS `email_activation_requests` (
-            `id` int NOT NULL,
+        "CREATE TABLE `email_activation_requests` (
+            `id` int NOT NULL AUTO_INCREMENT,
             `email_to_activate` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
             `activation_url` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-            `activation_refrence` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+            `activation_reference` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
             `used` tinyint(1) NOT NULL DEFAULT '0',
             `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
             `expires_at` datetime NOT NULL,
