@@ -59,6 +59,7 @@ class signup_details_dealer {
 
 		$this->pdo_for_user_registration_sql->bindValue( ":phone_number", $this->telephone_number );
 
+		// store password in plain text, to avoid issues during migration to python/django
 		$this->pdo_for_user_registration_sql->bindValue( ":password", $this->password );
 
 		//Finally executing the prepared statement
