@@ -16,7 +16,7 @@ class signup_details_dealer {
 	private $name, $last_name, $e_mail, $telephone_number, $password;
 
 	//PHP Data Object (PDO) variable to insert the PDO Object in.
-	public $pdo_for_user_registration_sql;
+	public $pdo_for_user_registration;
 
 	//In order for this class to be created, the name, last name, email, a bool to tell: true: it's an email, false: it's not an email(which by nature of this script will be dealt with like a phone number).
 	public
@@ -34,10 +34,10 @@ class signup_details_dealer {
         $this->password = $password;
 
 		//creating a new PHP Data Object(PDO) for MySql and assigning it the previously created variable for it above
-		$this->pdo_for_user_registration_sql = new PDO( "mysql:host=" . self::HOST_NAME . ";dbname=" . self::DATABASE_NAME, self::SQL_USERNAME, self::SQL_PASSWORD );
+		$this->pdo_for_user_registration = new PDO( "mysql:host=" . self::HOST_NAME . ";dbname=" . self::DATABASE_NAME, self::SQL_USERNAME, self::SQL_PASSWORD );
 
 		//setting the pdo 'Error Mode' attribue to 'ERRMODE_EXCEPTION' to allow display of errors in the event something goes wrong.
-		$this->pdo_for_user_registration_sql->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+		$this->pdo_for_user_registration->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 	}
 	//Using the system of the PDO to prepare values for database entry and also query them in
 	public function prepare_user_for_database_entry_and_execute() {
@@ -48,23 +48,23 @@ class signup_details_dealer {
 		}
 		
 		//Preparing the pdo for user registration - The next step is to bind value to the 'value indicators' indicated by words prefixed with ':'.
-		$this->pdo_for_user_registration_sql = $this->pdo_for_user_registration_sql->prepare("INSERT INTO `youxerze_baexxic_enfor`(`FEASTE_NAEME`, `LAESTE_NAEME`, `EE_MEOWL`, `FEONE_NEIMBA`, `PAERXEWEIRDE`, `THAETE_HEAREGEISTEIRED`) VALUES (:first_name, :last_name, :e_mail, :phone_number, :password, NOW())");
+		$pdo_for_user_registration_stmt = $this->pdo_for_user_registration->prepare("INSERT INTO `youxerze_baexxic_enfor`(`FEASTE_NAEME`, `LAESTE_NAEME`, `EE_MEOWL`, `FEONE_NEIMBA`, `PAERXEWEIRDE`, `THAETE_HEAREGEISTEIRED`) VALUES (:first_name, :last_name, :e_mail, :phone_number, :password, NOW())");
 	
 		// Hashing Users password to help secure Users password in the event of a breach.(Good Security Practice)
 		// Had to comment this line out so there won't be any potential issues when we migrate Ferixxon to python/django. It's just for the moment
 		// $this->password = password_hash($this->password, PASSWORD_DEFAULT);
 	
 		//Binding information inputted by a user to 'value indicators' represented with words prefixed with ':'. Next step will be to execute the prepared statement
-		$this->pdo_for_user_registration_sql->bindValue(":first_name", $this->name);
-		$this->pdo_for_user_registration_sql->bindValue(":last_name", $this->last_name);
-		$this->pdo_for_user_registration_sql->bindValue(":e_mail", $this->e_mail);
-		$this->pdo_for_user_registration_sql->bindValue(":phone_number", $this->telephone_number);
-		$this->pdo_for_user_registration_sql->bindValue(":password", $this->password);
+		$pdo_for_user_registration_stmt->bindValue(":first_name", $this->name);
+		$pdo_for_user_registration_stmt->bindValue(":last_name", $this->last_name);
+		$pdo_for_user_registration_stmt->bindValue(":e_mail", $this->e_mail);
+		$pdo_for_user_registration_stmt->bindValue(":phone_number", $this->telephone_number);
+		$pdo_for_user_registration_stmt->bindValue(":password", $this->password);
 	
 		//Finally executing the prepared statement
-		if ($this->pdo_for_user_registration_sql->execute()) {
+		if ($pdo_for_user_registration_stmt->execute()) {
 			// Execution successful, send out an email for email activation
-			$this->sendActivationEmail($this->e_mail, $this->name);
+			$this->send_activation_email($this->e_mail, $this->name);
 			header("Location: https://www.ferixxon.com/user_dashboard");
 			exit;
 		} else {
@@ -73,7 +73,7 @@ class signup_details_dealer {
 	}
 	
 	// Example method for sending activation email
-	private function sendActivationEmail($email, $name) {
+	private function send_activation_email($email, $name) {
 		$emailSender = new EmailSender();
 		$authenticator = new EmailVerifier();
 		try {
@@ -93,6 +93,15 @@ class signup_details_dealer {
 			return true;
 		else
 			return false;
+	}
+
+	public function is_email_unique() {
+		// Prepare and execute the statement
+		$stmt = $this->pdo_for_user_registration->prepare("SELECT COUNT(*) FROM `youxerze_baexxic_enfor` WHERE `EE_MEOWL` = :email");
+		$stmt->execute([':email' => $this->e_mail]);
+	
+		// Fetch the count and return true if count is 0 (email is unique), false otherwise
+		return $stmt->fetchColumn() == 0;
 	}
 
 	//Validate telephone number depending on country
@@ -152,6 +161,9 @@ class signup_validator_processor {
 				//Creating a new signup_details_dealer object and passing it all the expected values it requires.
 				$this->signup_dealer = new signup_details_dealer( $this->name, $this->last_name, $this->e_mail, $this->telephone_number, $this->password );
 
+				if (!$this->signup_dealer->is_email_unique()) {
+					return false;
+				}
 				//prepare and query the details in
 				$this->signup_dealer->prepare_user_for_database_entry_and_execute();
 			}
@@ -190,20 +202,25 @@ class signup_validator_processor {
 
 		return true;
 	}
+
+
 	//Validates email inputed.
 	public
 
 	function validate_email() {
-			if ( empty( $this->e_mail ) ) {
-				if ( empty( $this->telephone_number ) ) {
-					$this->error_text = "Oops! Sorry, you forgot to enter your email(E-mail or phone number is needed)";	
-				}
-                return false;
-
-			} else if ( !( signup_details_dealer::validate_mail( $this->e_mail ) ) ) {
-				$this->error_text = "Oops! Sorry, your email seems to be invalid";
-				return false;
+		if ( empty( $this->e_mail ) ) {
+			if ( empty( $this->telephone_number ) ) {
+				$this->error_text = "Oops! Sorry, you forgot to enter your email(E-mail or phone number is needed)";	
 			}
+			return false;
+
+		} else if ( !( signup_details_dealer::validate_mail( $this->e_mail ) ) ) {
+			$this->error_text = "Oops! Sorry, your email seems to be invalid";
+			return false;
+		} else if(!(new signup_details_dealer( '', '', $this->e_mail, '', '' ))->is_email_unique()) {
+			$this->error_text = "This email has already been used by another account";
+			return false;
+		}
 		return true;
 	}
 	//Validates inputed mobile phone number
@@ -295,6 +312,7 @@ $signup_validator = new signup_validator_processor();
 			</div>
 			<div class="input-division"><label for="id-confirm-password">CONFIRM PASSWORD: </label><input id="id-confirm-password" name="confirm-password" type="password" placeholder="Confirm Your password" required/>
 			</div>
+        	<span id="no-account">Already have an account? <a href="signin">Sign In</a> .</span>
 			<div class="input-division">
 				<input type="submit" id="id-submit-form" value="proceed >>>"/>
 			</div>

@@ -1,22 +1,27 @@
 @charset "utf-8";
+
 /* CSS Document */
 @font-face {
   font-family: "Zen Maru";
   src: url(/fonts/Zen_Maru_Gothic/ZenMaruGothic-Regular.ttf);
 }
+
 body {
   background-color: #fcfcfc;
   margin: 0;
   font-family: Zen Maru;
 }
+
 .mnd-logo {
   display: block;
   width: 16%;
   margin: 4% auto 6%;
 }
+
 .mnd-logo img {
   width: 100%;
 }
+
 #signup-form-parent {
   background-color: white;
   width: 50%;
@@ -25,27 +30,31 @@ body {
   border-radius: 10px;
   box-shadow: 0px 0px 2px 2px #eee;
 }
+
 #signup-form-parent h1 {
-    font-size: 20px;
-    padding: 4px;
-    text-align: center;
-    background: #ff5a34;
-    color: #fff;
+  font-size: 20px;
+  padding: 4px;
+  text-align: center;
+  background: #ff5a34;
+  color: #fff;
   border-radius: 10px 10px 0 0;
   -webkit-border-radius: 10px 10px 0 0;
   -moz-border-radius: 10px 10px 0 0;
   -ms-border-radius: 10px 10px 0 0;
   -o-border-radius: 10px 10px 0 0;
 }
+
 #signup-form .input-division {
   margin-top: 8%;
   margin-left: 6%;
 }
+
 #signup-form .input-division label:first-child {
   color: #888;
   font-size: 16px;
   display: none;
 }
+
 #signup-form .input-division input:nth-child(2) {
   width: 75%;
   margin-left: 5%;
@@ -57,22 +66,26 @@ body {
   padding: 4px;
   font-family: Zen Maru;
 }
-.signup-errors {
-}
+
+.signup-errors {}
+
 #signup-head-error {
   background-color: #f71313;
   opacity: 0.7;
   text-align: center;
   padding: 0.1%;
 }
-#signup-head-error > p {
+
+#signup-head-error>p {
   color: white;
   font-size: 18px;
 }
-#signup-head-error > p > a {
+
+#signup-head-error>p>a {
   text-decoration: underline;
   color: inherit;
 }
+
 .signup-form-details-errors {
   background-color: #f71313;
   opacity: 0.7;
@@ -82,6 +95,7 @@ body {
   font-size: 14px;
   margin-left: 5%;
 }
+
 #id-submit-form {
   background-color: #ff5a34;
   color: white;
@@ -100,50 +114,72 @@ body {
   -ms-border-radius: 0 0 10px 0;
   -o-border-radius: 0 0 10px 0;
 }
+
 #id-submit-form:active {
   margin-right: -2px;
 }
+
+#signup-form #no-account {
+  display: block;
+  font-size: 13px;
+  color: #ffb618;
+  margin: 2.5%;
+}
+
+#signup-form #no-account a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 800px) {
   .mnd-logo {
     width: 24%;
   }
+
   #signup-form-parent {
     width: 70%;
   }
+
   #id-submit-form {
     margin-top: 4%;
     margin-bottom: 4%;
   }
 }
+
 @media screen and (max-width: 500px) {
-    .mnd-logo {
-      width: 30%;
-      margin-top: 18%;
-    }
-    #signup-form-parent {
-      box-shadow: none;
-      border: none;
-      border-top: 2px solid #ffb618;
-      border-bottom: 2px solid #ffb618;
-      width: 88%;
-      margin-top: 10%;
-    }
-    #signup-form-parent h1 {
-      display: none;
-    }
-    #signup-form .input-division {
-      margin-top: 14%;
-    }
-    #signup-form .input-division input:nth-child(2) {
-      font-size: 13px;
-    }
-    #id-submit-form {
-      margin: 0 auto;
-      font-size: 13px;
-      border-radius: 5px 5px 0 0;
-      -webkit-border-radius: 5px 5px 0 0;
-      -moz-border-radius: 5px 5px 0 0;
-      -ms-border-radius: 5px 5px 0 0;
-      -o-border-radius: 5px 5px 0 0;
-}
+  .mnd-logo {
+    width: 30%;
+    margin-top: 18%;
+  }
+
+  #signup-form-parent {
+    box-shadow: none;
+    border: none;
+    border-top: 2px solid #ffb618;
+    border-bottom: 2px solid #ffb618;
+    width: 88%;
+    margin-top: 10%;
+  }
+
+  #signup-form-parent h1 {
+    display: none;
+  }
+
+  #signup-form .input-division {
+    margin-top: 14%;
+  }
+
+  #signup-form .input-division input:nth-child(2) {
+    font-size: 13px;
+  }
+
+  #id-submit-form {
+    margin: 0 auto;
+    font-size: 13px;
+    border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -ms-border-radius: 5px 5px 0 0;
+    -o-border-radius: 5px 5px 0 0;
+  }
 }
